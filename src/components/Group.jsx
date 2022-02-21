@@ -1,4 +1,6 @@
 import React from "react";
+// components
+import TodoCard from "../common/TodoCard";
 
 const Group = () => {
 	return (
@@ -10,8 +12,9 @@ const Group = () => {
 			<div>
 				<input type="text" />
 			</div>
-			<ul className="flex flex-col gap-y-2">
-				<li>todo card here</li>
+			<ul className="flex flex-col gap-y-2.5">
+				<TodoCard />
+				<TodoCard />
 			</ul>
 		</article>
 	);
