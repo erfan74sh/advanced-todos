@@ -1,6 +1,7 @@
 import React from "react";
 // components
 import TodoCard from "../common/TodoCard";
+import NewTodo from "../common/NewTodo";
 
 const Group = () => {
 	return (
@@ -9,9 +10,7 @@ const Group = () => {
 				<h2 className="font-medium capitalize">group name</h2>
 				<span className="py-0.5 px-2 max-w-full rounded bg-blue-100">2</span>
 			</header>
-			<div>
-				<input type="text" />
-			</div>
+			<NewTodo />
 			<ul className="flex flex-col gap-y-2.5">
 				<TodoCard />
 				<TodoCard />
