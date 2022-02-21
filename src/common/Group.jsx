@@ -1,7 +1,7 @@
 import React from "react";
 // components
-import TodoCard from "../common/TodoCard";
-import NewTodo from "../common/NewTodo";
+import TodoCard from "./TodoCard";
+import NewTodo from "./NewTodo";
 
 const Group = () => {
 	return (
