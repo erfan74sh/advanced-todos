@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // icons
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
@@ -11,31 +11,32 @@ const NewTodo = () => {
 		e.preventDefault();
 		if (expand) {
 			setExpand(!expand);
+			inputRef.current.focus();
 		} else if (!expand && newTodo.length > 0) {
-			console.log("add todo");
 			setExpand(!expand);
 			setNewTodo("");
-		} else setExpand(!expand);
+		} else {
+			setExpand(!expand);
+		}
 	};
 
 	const handleOnChangeInput = (e) => {
 		setNewTodo(e.target.value);
 	};
 
+	const inputRef = useRef(null);
+
 	return (
 		<div className="flex">
 			<div
-				className={`${
-					expand ? "w-0" : ""
-				} h-9 overflow-hidden transition-transform flex-grow`}
+				className={`${expand ? "w-0" : ""} h-9 transition-transform flex-grow`}
 			>
 				<input
 					type="text"
 					placeholder="Enter Todo..."
 					value={newTodo}
-					className={`${
-						expand ? "" : ""
-					} h-9 rounded-md px-2 outline-none focus:ring-2 overflow-hidden transition-all w-full mr-1`}
+					ref={inputRef}
+					className="h-9 rounded-md px-2 outline-none focus:ring-2 overflow-hidden transition-all w-full mr-1"
 					onChange={(e) => handleOnChangeInput(e)}
 				/>
 			</div>
