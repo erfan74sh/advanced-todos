@@ -16,7 +16,7 @@ const MoreOptions = () => {
 				<FontAwesomeIcon icon={faEllipsisVertical} className="text-sky-900" />
 			</span>
 			<ul className="bg-stone-50 absolute z-10 top-full transform translate-y-1 p-2.5 rounded shadow-md">
-				<li className="flex gap-x-2 items-center">
+				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-default rounded font-normal transition-colors duration-75">
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
 							icon={faPenToSquare}
@@ -25,7 +25,7 @@ const MoreOptions = () => {
 					</span>
 					<span>rename</span>
 				</li>
-				<li className="flex gap-x-2 items-center">
+				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-default rounded font-normal transition-colors duration-75">
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
 							icon={faTrashCan}
@@ -34,13 +34,13 @@ const MoreOptions = () => {
 					</span>
 					<span>delete</span>
 				</li>
-				<li className="flex gap-x-2 items-center">
+				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-default rounded font-normal transition-colors duration-75">
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon icon={faClone} className="text-sm text-zinc-400" />
 					</span>
 					<span>duplicate</span>
 				</li>
-				<li className="flex gap-x-2 items-center">
+				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-default rounded font-normal transition-colors duration-75">
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
 							icon={faRightFromBracket}
