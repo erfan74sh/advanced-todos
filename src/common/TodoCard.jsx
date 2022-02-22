@@ -1,11 +1,18 @@
 import React from "react";
+import MoreOptions from "./MoreOptions";
+// components
 
 const TodoCard = () => {
 	return (
 		<li className="bg-white rounded-md py-2 px-2.5">
 			<article>
 				<header>
-					<h3 className="font-medium">title of todo</h3>
+					<h3 className="font-medium flex justify-between gap-x-0.5 relative">
+						<span className="pr-6">title of todo 111111111111111111 11</span>
+						<div className="absolute right-0">
+							<MoreOptions />
+						</div>
+					</h3>
 				</header>
 				<section>description or ...</section>
 			</article>
