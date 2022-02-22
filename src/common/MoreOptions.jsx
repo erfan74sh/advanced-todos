@@ -16,35 +16,38 @@ const MoreOptions = () => {
 				<FontAwesomeIcon icon={faEllipsisVertical} className="text-sky-900" />
 			</span>
 			<ul className="bg-white absolute z-10 top-full transform translate-y-1 p-2.5 rounded shadow-md w-40">
-				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-default rounded font-normal transition-colors duration-75">
+				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75">
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
 							icon={faPenToSquare}
-							className="text-sm text-zinc-400"
+							className="text-sm text-neutral-400"
 						/>
 					</span>
 					<span>rename</span>
 				</li>
-				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-default rounded font-normal transition-colors duration-75">
+				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75">
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
 							icon={faTrashCan}
-							className="text-sm text-zinc-400"
+							className="text-sm text-neutral-400"
 						/>
 					</span>
 					<span>delete</span>
 				</li>
-				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-default rounded font-normal transition-colors duration-75">
+				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75">
 					<span className="w-4 h-4  flex items-center justify-center">
-						<FontAwesomeIcon icon={faClone} className="text-sm text-zinc-400" />
+						<FontAwesomeIcon
+							icon={faClone}
+							className="text-sm text-neutral-400"
+						/>
 					</span>
 					<span>duplicate</span>
 				</li>
-				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-default rounded font-normal transition-colors duration-75">
+				<li className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75">
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
 							icon={faRightFromBracket}
-							className="text-sm text-zinc-400"
+							className="text-sm text-neutral-400"
 						/>
 					</span>
 					<span>move to</span>
