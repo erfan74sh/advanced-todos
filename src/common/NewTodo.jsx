@@ -1,9 +1,13 @@
 import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// context
+import { useTasksContext } from "./providers/TasksProvider";
 // icons
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const NewTodo = () => {
+const NewTodo = ({ groupName }) => {
+	const { addToGroup } = useTasksContext();
+
 	const [newTodo, setNewTodo] = useState("");
 	const [expand, setExpand] = useState(true);
 
@@ -13,6 +17,7 @@ const NewTodo = () => {
 			setExpand(!expand);
 			inputRef.current.focus();
 		} else if (!expand && newTodo.length > 0) {
+			addToGroup({ title: newTodo, description: "", group: groupName });
 			setExpand(!expand);
 			setNewTodo("");
 		} else {
