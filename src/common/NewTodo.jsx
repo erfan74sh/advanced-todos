@@ -17,7 +17,12 @@ const NewTodo = ({ groupName }) => {
 			setExpand(!expand);
 			inputRef.current.focus();
 		} else if (!expand && newTodo.length > 0) {
-			addToGroup({ title: newTodo, description: "", group: groupName });
+			addToGroup({
+				title: newTodo,
+				description: "",
+				group: groupName,
+				id: new Date().getTime(),
+			});
 			setExpand(!expand);
 			setNewTodo("");
 		} else {
