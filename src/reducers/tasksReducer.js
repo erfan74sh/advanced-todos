@@ -3,6 +3,7 @@ export const initialState = [
 		title: "sample task title...",
 		description: "sample task description...",
 		group: "todo",
+		id: 1,
 	},
 ];
 
