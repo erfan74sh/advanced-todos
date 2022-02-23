@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // components
 import TodoCard from "./TodoCard";
 import NewTodo from "./NewTodo";
+import { useTasksContext } from "./providers/TasksProvider";
 
 const Group = ({ groupName }) => {
+	const { tasks } = useTasksContext();
+
+	const [tasksInGroup, setTasksInGroup] = useState([]);
+	useEffect(() => {
+		const filteredTasks = tasks.filter((task) => task.group === groupName);
+		setTasksInGroup(filteredTasks);
+	}, [tasks, groupName]);
+
 	return (
 		<article className="w-72 bg-blue-50 rounded-xl p-4 flex flex-col gap-y-3">
 			<header className="flex justify-between items-center">
@@ -14,8 +23,9 @@ const Group = ({ groupName }) => {
 			</header>
 			<NewTodo groupName={groupName} />
 			<ul className="flex flex-col gap-y-2.5">
-				<TodoCard />
-				<TodoCard />
+				{tasksInGroup.map((task, idx) => {
+					return <TodoCard {...task} key={idx} />;
+				})}
 			</ul>
 		</article>
 	);
