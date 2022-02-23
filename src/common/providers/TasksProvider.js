@@ -6,8 +6,19 @@ const tasksContext = createContext(initialState);
 const TasksProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(tasksReducer, initialState);
 
+	const addToGroup = (task) => {
+		const updatedTasks = state.concat(task);
+		dispatch({
+			type: "ADD_TASK_TO_GROUP",
+			payload: {
+				tasks: updatedTasks,
+			},
+		});
+	};
+
 	const value = {
 		tasks: state,
+		addToGroup,
 	};
 
 	return (
