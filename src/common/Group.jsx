@@ -18,7 +18,7 @@ const Group = ({ groupName }) => {
 			<header className="flex justify-between items-center">
 				<h2 className="font-medium capitalize">{groupName}</h2>
 				<span className="py-0.5 px-2 max-w-full rounded bg-blue-100 text-sm text-sky-900">
-					2
+					{tasksInGroup.length}
 				</span>
 			</header>
 			<NewTodo groupName={groupName} />
