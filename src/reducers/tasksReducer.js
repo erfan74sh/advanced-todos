@@ -11,7 +11,7 @@ const tasksReducer = (state, action) => {
 	switch (type) {
 		case "ADD_TASK_TO_GROUP":
 			console.log("ADD_TASK_TO_GROUP", payload);
-			return state;
+			return payload.tasks;
 		case "REMOVE_TASK_FROM_GROUP":
 			console.log("REMOVE_TASK_FROM_GROUP", payload);
 			return state;
