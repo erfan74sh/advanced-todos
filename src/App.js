@@ -1,11 +1,14 @@
 import "./App.css";
+import TasksProvider from "./common/providers/TasksProvider";
 // components
 import Groups from "./components/Groups";
 
 function App() {
 	return (
 		<div>
-			<Groups />
+			<TasksProvider>
+				<Groups />
+			</TasksProvider>
 		</div>
 	);
 }
