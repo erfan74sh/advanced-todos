@@ -12,7 +12,7 @@ const Group = ({ groupName }) => {
 					2
 				</span>
 			</header>
-			<NewTodo />
+			<NewTodo groupName={groupName} />
 			<ul className="flex flex-col gap-y-2.5">
 				<TodoCard />
 				<TodoCard />
