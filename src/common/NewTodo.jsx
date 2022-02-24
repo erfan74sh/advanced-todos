@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useTasksContext } from "./providers/TasksProvider";
 // icons
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const NewTodo = ({ groupName }) => {
+	const navigate = useNavigate();
 	const { addToGroup } = useTasksContext();
 
 	const [newTodo, setNewTodo] = useState("");
@@ -17,14 +19,16 @@ const NewTodo = ({ groupName }) => {
 			setExpand(!expand);
 			inputRef.current.focus();
 		} else if (!expand && newTodo.length > 0) {
+			const id = new Date().getTime();
 			addToGroup({
 				title: newTodo,
 				description: "",
 				group: groupName,
-				id: new Date().getTime(),
+				id,
 			});
 			setExpand(!expand);
 			setNewTodo("");
+			navigate(`${id}`);
 		} else {
 			setExpand(!expand);
 		}
