@@ -28,28 +28,30 @@ const Modal = () => {
 					className="w-full md:w-4/5 lg:w-3/5 bg-red-400 rounded-lg px-5 py-2 "
 					ref={modalBgRef}
 				>
-					<article>
+					<article className="flex flex-col gap-y-4">
 						<header>
 							<input
 								type="text"
 								value={taskToEdit.title}
 								placeholder="Todo title..."
-								className="text-4xl font-bold outline-none"
+								className="text-4xl font-bold outline-none text-stone-700"
 							/>
 						</header>
-						<section>
-							<ul>
-								<li>
-									<span>created date:</span>
-									<span>date</span>
+						<section className="border-b-2 pb-2">
+							<ul className="flex flex-col gap-y-3">
+								<li className="flex gap-x-4">
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4">created date:</span>
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4">date</span>
 								</li>
-								<li>
-									<span>status:</span>
-									<span>{taskToEdit.group}</span>
+								<li className="flex gap-x-4">
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4">status:</span>
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4">
+										{taskToEdit.group}
+									</span>
 								</li>
-								<li>
-									<span>tags:</span>
-									<span>tags...</span>
+								<li className="flex gap-x-4">
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4">tags:</span>
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4">tags...</span>
 								</li>
 							</ul>
 						</section>
