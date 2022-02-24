@@ -28,7 +28,40 @@ const Modal = () => {
 					className="w-full md:w-4/5 lg:w-3/5 bg-red-400 rounded-lg px-5 py-2 "
 					ref={modalBgRef}
 				>
-					{taskToEdit.title}
+					<article>
+						<header>
+							<input
+								type="text"
+								value={taskToEdit.title}
+								placeholder="Todo title..."
+								className="text-4xl font-bold outline-none"
+							/>
+						</header>
+						<section>
+							<ul>
+								<li>
+									<span>created date:</span>
+									<span>date</span>
+								</li>
+								<li>
+									<span>status:</span>
+									<span>{taskToEdit.group}</span>
+								</li>
+								<li>
+									<span>tags:</span>
+									<span>tags...</span>
+								</li>
+							</ul>
+						</section>
+						<section>
+							<h4>description:</h4>
+							<textarea
+								value={taskToEdit.description}
+								placeholder="more description..."
+								className="outline-none"
+							/>
+						</section>
+					</article>
 				</div>
 			</div>
 		</div>
