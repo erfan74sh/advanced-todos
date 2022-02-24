@@ -19,7 +19,7 @@ const TodoCard = ({ title, description, id }) => {
 
 	return (
 		<li
-			className="bg-white rounded-md py-2 px-2.5"
+			className="bg-white rounded-md py-2 px-2.5 cursor-pointer"
 			onClick={(e) => handleClickOnCard(e)}
 		>
 			<article>
