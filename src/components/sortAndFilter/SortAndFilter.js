@@ -17,7 +17,7 @@ const SortAndFilter = () => {
 		<div className="flex flex-col text-zinc-700">
 			<form
 				className="flex gap-x-3 justify-end"
-				onChange={(e) => handleChange(e)}
+				onInput={(e) => handleChange(e)}
 			>
 				{sortOrFilter !== "" && (
 					<label className="flex items-center p-1.5 rounded leading-none cursor-pointer bg-zinc-100 hover:text-sky-600 transition-colors">
