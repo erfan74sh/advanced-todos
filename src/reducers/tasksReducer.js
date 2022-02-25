@@ -4,6 +4,7 @@ export const initialState = [
 		description: "sample task description...",
 		group: "todo",
 		id: 1,
+		createdDate: new Date().toLocaleString()
 	},
 ];
 
