@@ -14,7 +14,7 @@ const Group = ({ groupName }) => {
 	}, [tasks, groupName]);
 
 	return (
-		<article className="w-72 bg-blue-50 rounded-xl p-4 flex flex-col gap-y-3">
+		<article className="w-72 bg-blue-50 rounded-xl p-4 flex flex-col gap-y-3 min-h-screen">
 			<header className="flex justify-between items-center">
 				<h2 className="font-medium capitalize">{groupName}</h2>
 				<span className="py-0.5 px-2 max-w-full rounded bg-blue-100 text-sm text-sky-900">
