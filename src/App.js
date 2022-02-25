@@ -5,12 +5,18 @@ import TasksProvider from "./common/providers/TasksProvider";
 import Groups from "./components/Groups";
 // styles
 import "./App.css";
+import Header from "./components/Header";
+import Nav from "./components/Nav";
 
 function App() {
 	return (
 		<TasksProvider>
 			<Outlet />
-			<Groups />
+			<div className="flex flex-col px-44">
+				<Nav />
+				<Header />
+				<Groups />
+			</div>
 		</TasksProvider>
 	);
 }
