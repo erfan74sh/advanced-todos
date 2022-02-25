@@ -52,7 +52,7 @@ const Sort = () => {
 				</div>
 			)}
 			<div
-				className="flex gap-x-3 items-center text-zinc-600 cursor-pointer"
+				className="hover:bg-zinc-100 rounded-md px-1 py-1 flex gap-x-3 items-center text-zinc-600 cursor-pointer"
 				onClick={() => setShowDropdown(!showDropdown)}
 			>
 				<div>
@@ -62,7 +62,7 @@ const Sort = () => {
 				<FontAwesomeIcon icon={faCaretDown} />
 			</div>
 			{showDropdown && (
-				<ul className="flex flex-col px-2 py-2.5 w-32 absolute right-0 -bottom-1 transform translate-y-full bg-zinc-50 shadow-lg z-50" onChange={(e)=> handleChange(e)}>
+				<ul className="flex flex-col px-2 py-2.5 w-32 absolute right-0 rounded-md -bottom-1 transform translate-y-full bg-zinc-50 shadow-lg z-50" onChange={(e)=> handleChange(e)}>
 					<li>
 						<label className="block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded">
 							<span>Name</span>
