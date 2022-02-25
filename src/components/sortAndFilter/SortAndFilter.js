@@ -14,7 +14,7 @@ const SortAndFilter = () => {
 	};
 
 	return (
-		<div className="flex flex-col text-zinc-700">
+		<div className="flex flex-col text-zinc-700 overflow-hidden flex-grow">
 			<form
 				className="flex gap-x-3 justify-end"
 				onInput={(e) => handleChange(e)}
@@ -66,8 +66,15 @@ const SortAndFilter = () => {
 					/>
 				</label>
 			</form>
-			<SortOptions />
-			<FilterOptions />
+			<div
+				className={`${
+					sortOrFilter !== "" ? "max-h-screen" : "max-h-0"
+				} overflow-hidden transition-all duration-300  w-full`}
+			>
+				<div className="mt-3 pt-1 flex justify-end">
+					{sortOrFilter === "sort" ? <SortOptions /> : <FilterOptions />}
+				</div>
+			</div>
 		</div>
 	);
 };
