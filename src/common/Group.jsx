@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // components
 import TodoCard from "./TodoCard";
 import NewTodo from "./NewTodo";
-import { useTasksContext } from "./providers/TasksProvider";
+import { useTasksContext } from "../providers/TasksProvider";
 
 const Group = ({ groupName }) => {
 	const { tasks } = useTasksContext();

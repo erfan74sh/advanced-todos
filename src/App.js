@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 // providers
-import TasksProvider from "./common/providers/TasksProvider";
+import TasksProvider from "./providers/TasksProvider";
 // components
 import Groups from "./components/Groups";
 // styles

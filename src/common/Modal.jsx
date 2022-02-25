@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 import MoreOptions from "./MoreOptions";
-import { useTasksContext } from "./providers/TasksProvider";
+import { useTasksContext } from "../providers/TasksProvider";
 
 const Modal = () => {
 	const { tasks } = useTasksContext();

@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // context
-import { useTasksContext } from "./providers/TasksProvider";
+import { useTasksContext } from "../providers/TasksProvider";
 // icons
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
