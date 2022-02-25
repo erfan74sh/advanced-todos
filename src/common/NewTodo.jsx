@@ -19,12 +19,15 @@ const NewTodo = ({ groupName }) => {
 			setExpand(!expand);
 			inputRef.current.focus();
 		} else if (!expand && newTodo.length > 0) {
-			const id = new Date().getTime();
+			const date = new Date()
+			const id = date.getTime()
+			const createdDate = date.toLocaleString()
 			addToGroup({
 				title: newTodo,
 				description: "",
 				group: groupName,
 				id,
+				createdDate
 			});
 			setExpand(!expand);
 			setNewTodo("");
