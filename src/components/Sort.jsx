@@ -64,7 +64,7 @@ const Sort = () => {
 			{showDropdown && (
 				<ul className="flex flex-col px-2 py-2.5 w-32 absolute right-0 rounded-md -bottom-1 transform translate-y-full bg-zinc-50 shadow-lg z-50" onChange={(e)=> handleChange(e)}>
 					<li>
-						<label className="block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded">
+						<label className={`block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded ${sortBy === "name" && "text-sky-900"}`}>
 							<span>Name</span>
 							<input
 								type="radio"
@@ -75,7 +75,7 @@ const Sort = () => {
 						</label>
 					</li>
 					<li>
-						<label className="block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded">
+						<label className={`block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded ${sortBy === "date" && "text-sky-900"}`}>
 							<span>Date</span>
 							<input
 								type="radio"
@@ -86,7 +86,7 @@ const Sort = () => {
 						</label>
 					</li>
 					<li>
-						<label className="block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded">
+						<label className={`block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded ${sortBy === "priority" && "text-sky-900"}`}>
 							<span>Priority</span>
 							<input
 								type="radio"
@@ -97,7 +97,7 @@ const Sort = () => {
 						</label>
 					</li>
 					<li>
-						<label className="block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded">
+						<label className={`block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded ${sortBy === "" && "text-sky-900"}`}>
 							<span>None</span>
 							<input type="radio" name="sortBy" value="" className="hidden" />
 						</label>
