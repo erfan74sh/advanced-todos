@@ -1,5 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// context
+import { useTasksContext } from "../providers/TasksProvider";
 // icons
 import {
 	faEllipsisVertical,
@@ -9,7 +11,14 @@ import {
 	faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
-const MoreOptions = ({ handleDropdown, showDropdown }) => {
+const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
+	const { removeTask} = useTasksContext()
+
+	const handleRemoveTask = () => {
+		removeTask(taskId);
+		handleDropdown()
+	}
+
 	return (
 		<>
 			<span
@@ -37,7 +46,7 @@ const MoreOptions = ({ handleDropdown, showDropdown }) => {
 				</li>
 				<li
 					className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
-					onClick={() => handleDropdown()}
+					onClick={() => handleRemoveTask()}
 				>
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
