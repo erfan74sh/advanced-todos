@@ -1,11 +1,17 @@
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// iconst
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const MoveToGroup = () => {
+const MoveToGroup = ({ handleTaskChange }) => {
 	const [showDropdown, setShowDropdown] = useState(false);
 	const handleShowDropdown = () => {
 		setShowDropdown(!showDropdown);
+	};
+
+	const handleOnChange = (e) => {
+		handleTaskChange(e);
+		handleShowDropdown();
 	};
 
 	return (
@@ -22,29 +28,22 @@ const MoveToGroup = () => {
 				</span>
 			</div>
 			{showDropdown && (
-				<form className="absolute left-0 w-full bg-white rounded-b shadow-md p-2.5 flex flex-col top-full border-t-2">
+				<form
+					className="absolute left-0 w-full bg-white rounded-b shadow-md p-2.5 flex flex-col top-full border-t-2"
+					onInput={(e) => handleOnChange(e)}
+				>
 					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
-						<input
-							type="radio"
-							name="groupName"
-							value="todo"
-							className="hidden"
-						/>
+						<input type="radio" name="group" value="todo" className="hidden" />
 						<span>todo</span>
 					</label>
 					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
-						<input
-							type="radio"
-							name="groupName"
-							value="doing"
-							className="hidden"
-						/>
+						<input type="radio" name="group" value="doing" className="hidden" />
 						<span>doing</span>
 					</label>
 					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
 						<input
 							type="radio"
-							name="groupName"
+							name="group"
 							value="completed"
 							className="hidden"
 						/>
