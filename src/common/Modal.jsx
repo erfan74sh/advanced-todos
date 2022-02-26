@@ -29,6 +29,11 @@ const Modal = () => {
 		setTaskToEdit({...taskToEdit, [e.target.name]: e.target.value})
 	}
 
+	const handleTaskUpdate = () => {
+		editTask(taskToEdit.id, taskToEdit);
+		navigate("/")
+	}
+
 	return (
 		<div className="fixed w-screen h-screen bg-gray-300 z-50 bg-opacity-60 backdrop-filter backdrop-blur-sm">
 			<div className="w-full h-full sm:px-10 flex items-center justify-center">
@@ -85,7 +90,7 @@ const Modal = () => {
 								onChange={(e)=> handleTaskChange(e)}
 							/>
 						</section>
-						<button onClick={()=> {editTask(taskToEdit.id, taskToEdit)}}>update</button>
+						<button onClick={()=> handleTaskUpdate()}>update</button>
 					</article>
 				</div>
 			</div>
