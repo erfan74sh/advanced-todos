@@ -17,6 +17,12 @@ const tasksReducer = (state, action) => {
 		case "REMOVE_TASK_FROM_GROUP":
 			console.log("REMOVE_TASK_FROM_GROUP", payload);
 			return state;
+			case "EDIT_TASK":
+				console.log("EDIT_TASK");
+				const index = state.findIndex(task=> task.id === payload.id)
+				const tempTasks = [...state];
+				tempTasks[index] = payload.editedTask
+				return tempTasks
 		default:
 			return state;
 	}
