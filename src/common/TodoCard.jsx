@@ -30,6 +30,7 @@ const TodoCard = ({ title, description, id }) => {
 							<MoreOptions
 								showDropdown={showDropdown}
 								handleDropdown={() => setShowDropdown(!showDropdown)}
+								taskId={id}
 							/>
 						</div>
 					</h3>
