@@ -78,7 +78,10 @@ const Modal = () => {
 								</li>
 								<li className="flex gap-x-4 relative">
 									<div className="w-1/2 sm:w-1/3 lg:w-1/4 relative">
-										<MoveToGroup />
+										<MoveToGroup
+											taskId={taskToEdit.id}
+											handleTaskChange={handleTaskChange}
+										/>
 									</div>
 									<span className="w-1/2 sm:w-1/3 lg:w-1/4">
 										{taskToEdit.group}
