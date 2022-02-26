@@ -36,11 +36,26 @@ const TasksProvider = ({ children }) => {
 		})
 	}
 
+	const duplicateTask = (id) => {
+		const taskToDuplicate = state.filter(task => task.id === id)[0]
+		const index = state.findIndex(task => task.id === id);
+		const date = new Date();
+		const tempTasks = [...state]
+		tempTasks.splice(index+1, 0, {...taskToDuplicate, id: date.getTime(), createdDate: date.toLocaleString()})
+		dispatch({
+			type: "DUPLICATE_TASK",
+			payload: {
+				tasks: tempTasks
+			}
+		})
+	}
+
 	const value = {
 		tasks: state,
 		addToGroup,
 		editTask,
 		removeTask,
+		duplicateTask
 	};
 
 	return (
