@@ -17,7 +17,11 @@ const Modal = () => {
 	const navigate = useNavigate();
 	const modalBgRef = useRef(null);
 
-	const [taskToEdit, setTaskToEdit] = useState({});
+	const [taskToEdit, setTaskToEdit] = useState({
+		title: "",
+		description: "",
+		group: "",
+	});
 	useEffect(() => {
 		const thisTask = tasks.filter((task) => task.id === parseInt(taskId))?.[0];
 		thisTask && setTaskToEdit({ ...thisTask });
@@ -59,14 +63,16 @@ const Modal = () => {
 					</nav>
 					<article className="flex flex-col gap-y-4 mt-10 px-10 py-5">
 						<header>
-							<input
-								type="text"
-								value={taskToEdit.title}
-								name="title"
-								onChange={(e) => handleTaskChange(e)}
-								placeholder="Todo title..."
-								className="text-4xl font-bold outline-none text-stone-700"
-							/>
+							<form>
+								<input
+									type="text"
+									value={taskToEdit.title}
+									name="title"
+									onChange={(e) => handleTaskChange(e)}
+									placeholder="Todo title..."
+									className="text-4xl font-bold outline-none text-stone-700"
+								/>
+							</form>
 						</header>
 						<section className="border-b-2 pb-2">
 							<ul className="flex flex-col gap-y-3">
