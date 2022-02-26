@@ -8,29 +8,27 @@ import {
 	faEllipsisVertical,
 	faTrashCan,
 	faClone,
-	faRightFromBracket,
 	faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
-import MoveToGroup from "./MoveToGroup";
 
 const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
-	const navigate = useNavigate()
-	const { removeTask, duplicateTask} = useTasksContext()
+	const navigate = useNavigate();
+	const { removeTask, duplicateTask } = useTasksContext();
 
 	const handleRemoveTask = () => {
 		removeTask(taskId);
-		handleDropdown()
-	}
+		handleDropdown();
+	};
 
 	const handleDuplicateTask = () => {
 		duplicateTask(taskId);
-		handleDropdown()
-	}
+		handleDropdown();
+	};
 
 	const handleEditTask = () => {
-		navigate(`${taskId}`)
-		handleDropdown()
-	}
+		navigate(`${taskId}`);
+		handleDropdown();
+	};
 
 	return (
 		<>
@@ -80,19 +78,6 @@ const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
 						/>
 					</span>
 					<span>duplicate</span>
-				</li>
-				<li
-					className="relative flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
-					onClick={() => handleDropdown()}
-				>
-					<span className="w-4 h-4  flex items-center justify-center">
-						<FontAwesomeIcon
-							icon={faRightFromBracket}
-							className="text-sm text-neutral-400"
-						/>
-					</span>
-					<span>move to</span>
-					<MoveToGroup/>
 				</li>
 			</ul>
 		</>
