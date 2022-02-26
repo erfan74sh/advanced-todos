@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 // context
 import { useTasksContext } from "../providers/TasksProvider";
 // icons
@@ -10,8 +11,10 @@ import {
 	faRightFromBracket,
 	faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import MoveToGroup from "./MoveToGroup";
 
 const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
+	const navigate = useNavigate()
 	const { removeTask, duplicateTask} = useTasksContext()
 
 	const handleRemoveTask = () => {
@@ -21,6 +24,11 @@ const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
 
 	const handleDuplicateTask = () => {
 		duplicateTask(taskId);
+		handleDropdown()
+	}
+
+	const handleEditTask = () => {
+		navigate(`${taskId}`)
 		handleDropdown()
 	}
 
@@ -39,7 +47,7 @@ const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
 			>
 				<li
 					className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
-					onClick={() => handleDropdown()}
+					onClick={() => handleEditTask()}
 				>
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
@@ -47,7 +55,7 @@ const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
 							className="text-sm text-neutral-400"
 						/>
 					</span>
-					<span>rename</span>
+					<span>edit</span>
 				</li>
 				<li
 					className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
@@ -74,7 +82,7 @@ const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
 					<span>duplicate</span>
 				</li>
 				<li
-					className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
+					className="relative flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
 					onClick={() => handleDropdown()}
 				>
 					<span className="w-4 h-4  flex items-center justify-center">
@@ -84,6 +92,7 @@ const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
 						/>
 					</span>
 					<span>move to</span>
+					<MoveToGroup/>
 				</li>
 			</ul>
 		</>
