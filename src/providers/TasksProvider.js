@@ -16,9 +16,20 @@ const TasksProvider = ({ children }) => {
 		});
 	};
 
+	const editTask = (id, editedTask) => {
+		dispatch({
+			type: "EDIT_TASK",
+			payload: {
+				id,
+				editedTask
+			}
+		})
+	}
+
 	const value = {
 		tasks: state,
 		addToGroup,
+		editTask
 	};
 
 	return (
