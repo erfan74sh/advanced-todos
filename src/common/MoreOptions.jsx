@@ -12,10 +12,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
-	const { removeTask} = useTasksContext()
+	const { removeTask, duplicateTask} = useTasksContext()
 
 	const handleRemoveTask = () => {
 		removeTask(taskId);
+		handleDropdown()
+	}
+
+	const handleDuplicateTask = () => {
+		duplicateTask(taskId);
 		handleDropdown()
 	}
 
@@ -58,7 +63,7 @@ const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
 				</li>
 				<li
 					className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
-					onClick={() => handleDropdown()}
+					onClick={() => handleDuplicateTask()}
 				>
 					<span className="w-4 h-4  flex items-center justify-center">
 						<FontAwesomeIcon
