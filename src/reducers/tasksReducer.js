@@ -14,9 +14,9 @@ const tasksReducer = (state, action) => {
 		case "ADD_TASK_TO_GROUP":
 			console.log("ADD_TASK_TO_GROUP", payload);
 			return payload.tasks;
-		case "REMOVE_TASK_FROM_GROUP":
-			console.log("REMOVE_TASK_FROM_GROUP", payload);
-			return state;
+		case "REMOVE_TASK":
+			console.log("REMOVE_TASK", payload);
+			return payload.tasks;
 		case "EDIT_TASK":
 			console.log("EDIT_TASK");
 			const index = state.findIndex(task=> task.id === payload.id)
