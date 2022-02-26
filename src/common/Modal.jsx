@@ -7,7 +7,7 @@ import MoreOptions from "./MoreOptions";
 import { useTasksContext } from "../providers/TasksProvider";
 
 const Modal = () => {
-	const { tasks } = useTasksContext();
+	const { tasks, editTask } = useTasksContext();
 	const { taskId } = useParams();
 	const navigate = useNavigate();
 	const modalBgRef = useRef(null);
@@ -15,7 +15,7 @@ const Modal = () => {
 	const [taskToEdit, setTaskToEdit] = useState({});
 	useEffect(() => {
 		const thisTask = tasks.filter((task) => task.id === parseInt(taskId))?.[0];
-		thisTask && setTaskToEdit(thisTask);
+		thisTask && setTaskToEdit({...thisTask});
 		console.log(thisTask)
 	}, [tasks, taskId]);
 
@@ -24,6 +24,10 @@ const Modal = () => {
 	};
 
 	useOnClickOutside(modalBgRef, onClickOutside);
+
+	const handleTaskChange = (e) => {
+		setTaskToEdit({...taskToEdit, [e.target.name]: e.target.value})
+	}
 
 	return (
 		<div className="fixed w-screen h-screen bg-gray-300 z-50 bg-opacity-60 backdrop-filter backdrop-blur-sm">
@@ -48,6 +52,8 @@ const Modal = () => {
 							<input
 								type="text"
 								value={taskToEdit.title}
+								name="title"
+								onChange={(e) => handleTaskChange(e)}
 								placeholder="Todo title..."
 								className="text-4xl font-bold outline-none text-stone-700"
 							/>
@@ -74,9 +80,12 @@ const Modal = () => {
 							<textarea
 								value={taskToEdit.description}
 								placeholder="more description..."
+								name="description"
 								className="outline-none w-full"
+								onChange={(e)=> handleTaskChange(e)}
 							/>
 						</section>
+						<button onClick={()=> {editTask(taskToEdit.id, taskToEdit)}}>update</button>
 					</article>
 				</div>
 			</div>
