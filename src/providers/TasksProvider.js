@@ -26,10 +26,21 @@ const TasksProvider = ({ children }) => {
 		})
 	}
 
+	const removeTask = (id) => {
+		const tempTasks = state.filter(task => task.id !== id);
+		dispatch({
+			type: "REMOVE_TASK",
+			payload:{
+				tasks: tempTasks
+			}
+		})
+	}
+
 	const value = {
 		tasks: state,
 		addToGroup,
-		editTask
+		editTask,
+		removeTask,
 	};
 
 	return (
