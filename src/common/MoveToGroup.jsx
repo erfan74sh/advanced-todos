@@ -17,8 +17,8 @@ const MoveToGroup = ({ handleTaskChange }) => {
 	return (
 		<>
 			<div
-				className={`flex justify-between rounded-t px-2 py-1 ${
-					showDropdown && "shadow-md"
+				className={`flex justify-between rounded px-2 py-1 hover:shadow cursor-pointer text-zinc-600 transition-all ${
+					showDropdown && "shadow-md rounded-b-none"
 				}`}
 				onClick={() => handleShowDropdown()}
 			>
