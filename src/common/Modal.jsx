@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // components
 import MoreOptions from "./MoreOptions";
+import AddTags from "./AddTags";
 import MoveToGroup from "./MoveToGroup";
 // hooks
 import useOnClickOutside from "../hooks/useOnClickOutside";
@@ -44,7 +45,7 @@ const Modal = () => {
 	};
 
 	return (
-		<div className="fixed w-screen h-screen bg-gray-300 z-50 bg-opacity-60 backdrop-filter backdrop-blur-sm">
+		<div className="fixed w-screen h-screen bg-gray-300 z-10 bg-opacity-60 backdrop-filter backdrop-blur-sm">
 			<div className="w-full h-full sm:px-10 flex items-center justify-center">
 				<div
 					className="w-full md:w-4/5 lg:w-3/5 h-2/3 overflow-y-scroll bg-white shadow-2xl rounded-lg px-5 py-2 "
@@ -94,7 +95,9 @@ const Modal = () => {
 									</span>
 								</li>
 								<li className="flex gap-x-4">
-									<span className="w-1/2 sm:w-1/3 lg:w-1/4">tags:</span>
+									<div className="w-1/2 sm:w-1/3 lg:w-1/4 relative">
+										<AddTags />
+									</div>
 									<span className="w-1/2 sm:w-1/3 lg:w-1/4">tags...</span>
 								</li>
 							</ul>
