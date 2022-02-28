@@ -29,6 +29,26 @@ const Modal = () => {
 		console.log(thisTask);
 	}, [tasks, taskId]);
 
+	const [nextTaskStatus, setNextTaskStatus] = useState({
+		prev: true,
+		next: true,
+	});
+	useEffect(() => {
+		const tasksInGroup = tasks.filter(
+			(task) => task.group === taskToEdit.group
+		);
+		const currentTaskIndex = tasksInGroup.findIndex(
+			(task) => task.id === taskToEdit.id
+		);
+		if (currentTaskIndex === 0) {
+			setNextTaskStatus({ prev: false, next: true });
+		} else if (currentTaskIndex === tasksInGroup.length - 1) {
+			setNextTaskStatus({ prev: true, next: false });
+		} else {
+			setNextTaskStatus({ prev: true, next: true });
+		}
+	}, [tasks, taskToEdit]);
+
 	const onClickOutside = () => {
 		navigate("/");
 	};
@@ -81,13 +101,17 @@ const Modal = () => {
 					<nav className="flex justify-between items-center">
 						<div className="flex items-center gap-x-1">
 							<span
-								className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors"
+								className={`w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors text-zinc-700 ${
+									!nextTaskStatus.prev && "pointer-events-none text-zinc-300"
+								}`}
 								onClick={() => handleNextTask("prev")}
 							>
 								<FontAwesomeIcon icon={faChevronUp} />
 							</span>
 							<span
-								className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors"
+								className={`w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors text-zinc-700 ${
+									!nextTaskStatus.next && "pointer-events-none text-zinc-300"
+								}`}
 								onClick={() => handleNextTask("next")}
 							>
 								<FontAwesomeIcon icon={faChevronDown} />
