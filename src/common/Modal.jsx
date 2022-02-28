@@ -58,6 +58,20 @@ const Modal = () => {
 		} else return;
 	};
 
+	const handleOnPrevClick = () => {
+		const tasksInGroup = tasks.filter(
+			(task) => task.group === taskToEdit.group
+		);
+		const currentTaskIndex = tasksInGroup.findIndex(
+			(task) => task.id === taskToEdit.id
+		);
+		if (currentTaskIndex > 0) {
+			const prevTaskId = tasksInGroup[currentTaskIndex - 1].id;
+			console.log(prevTaskId);
+			navigate(`/${prevTaskId}`);
+		} else return;
+	};
+
 	return (
 		<div className="fixed w-screen h-screen bg-gray-300 z-10 bg-opacity-60 backdrop-filter backdrop-blur-sm">
 			<div className="w-full h-full sm:px-10 flex items-center justify-center">
@@ -67,12 +81,15 @@ const Modal = () => {
 				>
 					<nav className="flex justify-between items-center">
 						<div className="flex items-center gap-x-1">
-							<span className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors">
+							<span
+								className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors"
+								onClick={handleOnPrevClick}
+							>
 								<FontAwesomeIcon icon={faChevronUp} />
 							</span>
 							<span
 								className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors"
-								onClick={() => handleOnclickNext()}
+								onClick={handleOnclickNext}
 							>
 								<FontAwesomeIcon icon={faChevronDown} />
 							</span>
