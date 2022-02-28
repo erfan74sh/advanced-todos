@@ -44,6 +44,20 @@ const Modal = () => {
 		navigate("/");
 	};
 
+	const handleOnclickNext = () => {
+		const tasksInGroup = tasks.filter(
+			(task) => task.group === taskToEdit.group
+		);
+		const currentTaskIndex = tasksInGroup.findIndex(
+			(task) => task.id === taskToEdit.id
+		);
+		if (currentTaskIndex < tasksInGroup.length - 1) {
+			const nextTaskId = tasksInGroup[currentTaskIndex + 1].id;
+			console.log(nextTaskId);
+			navigate(`/${nextTaskId}`);
+		} else return;
+	};
+
 	return (
 		<div className="fixed w-screen h-screen bg-gray-300 z-10 bg-opacity-60 backdrop-filter backdrop-blur-sm">
 			<div className="w-full h-full sm:px-10 flex items-center justify-center">
@@ -56,7 +70,10 @@ const Modal = () => {
 							<span className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors">
 								<FontAwesomeIcon icon={faChevronUp} />
 							</span>
-							<span className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors">
+							<span
+								className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors"
+								onClick={() => handleOnclickNext()}
+							>
 								<FontAwesomeIcon icon={faChevronDown} />
 							</span>
 						</div>
