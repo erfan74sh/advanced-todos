@@ -44,32 +44,31 @@ const Modal = () => {
 		navigate("/");
 	};
 
-	const handleOnclickNext = () => {
+	const handleNextTask = (nextOrPrev) => {
 		const tasksInGroup = tasks.filter(
 			(task) => task.group === taskToEdit.group
 		);
 		const currentTaskIndex = tasksInGroup.findIndex(
 			(task) => task.id === taskToEdit.id
 		);
-		if (currentTaskIndex < tasksInGroup.length - 1) {
-			const nextTaskId = tasksInGroup[currentTaskIndex + 1].id;
-			console.log(nextTaskId);
-			navigate(`/${nextTaskId}`);
-		} else return;
-	};
-
-	const handleOnPrevClick = () => {
-		const tasksInGroup = tasks.filter(
-			(task) => task.group === taskToEdit.group
-		);
-		const currentTaskIndex = tasksInGroup.findIndex(
-			(task) => task.id === taskToEdit.id
-		);
-		if (currentTaskIndex > 0) {
-			const prevTaskId = tasksInGroup[currentTaskIndex - 1].id;
-			console.log(prevTaskId);
-			navigate(`/${prevTaskId}`);
-		} else return;
+		switch (nextOrPrev) {
+			case "next":
+				if (currentTaskIndex < tasksInGroup.length - 1) {
+					const nextTaskId = tasksInGroup[currentTaskIndex + 1].id;
+					console.log(nextTaskId);
+					navigate(`/${nextTaskId}`);
+					break;
+				} else return;
+			case "prev":
+				if (currentTaskIndex > 0) {
+					const prevTaskId = tasksInGroup[currentTaskIndex - 1].id;
+					console.log(prevTaskId);
+					navigate(`/${prevTaskId}`);
+					break;
+				} else return;
+			default:
+				return;
+		}
 	};
 
 	return (
@@ -83,13 +82,13 @@ const Modal = () => {
 						<div className="flex items-center gap-x-1">
 							<span
 								className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors"
-								onClick={handleOnPrevClick}
+								onClick={() => handleNextTask("prev")}
 							>
 								<FontAwesomeIcon icon={faChevronUp} />
 							</span>
 							<span
 								className="w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors"
-								onClick={handleOnclickNext}
+								onClick={() => handleNextTask("next")}
 							>
 								<FontAwesomeIcon icon={faChevronDown} />
 							</span>
