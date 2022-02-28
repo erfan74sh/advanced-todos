@@ -100,22 +100,22 @@ const Modal = () => {
 				>
 					<nav className="flex justify-between items-center">
 						<div className="flex items-center gap-x-1">
-							<span
+							<button
 								className={`w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors text-zinc-700 ${
 									!nextTaskStatus.prev && "pointer-events-none text-zinc-300"
 								}`}
 								onClick={() => handleNextTask("prev")}
 							>
 								<FontAwesomeIcon icon={faChevronUp} />
-							</span>
-							<span
+							</button>
+							<button
 								className={`w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors text-zinc-700 ${
 									!nextTaskStatus.next && "pointer-events-none text-zinc-300"
 								}`}
 								onClick={() => handleNextTask("next")}
 							>
 								<FontAwesomeIcon icon={faChevronDown} />
-							</span>
+							</button>
 						</div>
 						<MoreOptions />
 					</nav>
