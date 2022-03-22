@@ -30,8 +30,8 @@ const Modal = () => {
 	}, [tasks, taskId]);
 
 	const [nextTaskStatus, setNextTaskStatus] = useState({
-		prev: true,
-		next: true,
+		prev: false,
+		next: false,
 	});
 	useEffect(() => {
 		const tasksInGroup = tasks.filter(
@@ -40,12 +40,14 @@ const Modal = () => {
 		const currentTaskIndex = tasksInGroup.findIndex(
 			(task) => task.id === taskToEdit.id
 		);
-		if (currentTaskIndex === 0) {
-			setNextTaskStatus({ prev: false, next: true });
-		} else if (currentTaskIndex === tasksInGroup.length - 1) {
-			setNextTaskStatus({ prev: true, next: false });
-		} else {
-			setNextTaskStatus({ prev: true, next: true });
+		if (tasksInGroup.length > 1) {
+			if (currentTaskIndex === 0) {
+				setNextTaskStatus({ prev: false, next: true });
+			} else if (currentTaskIndex === tasksInGroup.length - 1) {
+				setNextTaskStatus({ prev: true, next: false });
+			} else {
+				setNextTaskStatus({ prev: true, next: true });
+			}
 		}
 	}, [tasks, taskToEdit]);
 
