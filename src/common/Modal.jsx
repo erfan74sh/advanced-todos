@@ -130,7 +130,7 @@ const Modal = () => {
 									name="title"
 									onChange={(e) => handleTaskChange(e)}
 									placeholder="Todo title..."
-									className="text-4xl font-bold outline-none text-stone-700 bg-transparent"
+									className="text-4xl font-bold outline-none text-stone-700 bg-transparent w-full hover:bg-slate-50 px-1.5 py-1 rounded-md focus:ring-2"
 								/>
 							</form>
 						</header>
@@ -166,7 +166,7 @@ const Modal = () => {
 								value={taskToEdit.description}
 								placeholder="more description..."
 								name="description"
-								className="outline-none w-full bg-transparent"
+								className="outline-none w-full bg-transparent hover:bg-slate-50 px-1.5 py-1 rounded-md focus:ring-2"
 								onChange={(e) => handleTaskChange(e)}
 							/>
 						</section>
