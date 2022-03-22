@@ -29,6 +29,9 @@ const tasksReducer = (state, action) => {
 		case "CHANGE_GROUP":
 			console.log("CHANGE_GROUP");
 			return state;
+		case "ADD_TAG":
+			console.log("ADD_TAG");
+			return { ...state, tags: payload.tags };
 		default:
 			return state;
 	}
