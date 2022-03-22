@@ -56,6 +56,25 @@ const TasksProvider = ({ children }) => {
 		});
 	};
 
+	const addTagToTask = (id, tagToAdd) => {
+		const index = state.tasks.findIndex((task) => task.id === id);
+		const tempTask = {
+			...state.tasks[index],
+			tags: [...state.tasks[index].tags],
+		};
+		if (!tempTask.tags.includes(tagToAdd)) {
+			tempTask.tags.push(tagToAdd);
+			const tempTasks = [...state.tasks];
+			tempTasks[index] = tempTask;
+			dispatch({
+				type: "ADD_TAG_TO_TASK",
+				payload: {
+					tasks: tempTasks,
+				},
+			});
+		}
+	};
+
 	const addTag = (tagName) => {
 		const tempTags = state.tags;
 		tempTags.push(tagName);
@@ -74,6 +93,7 @@ const TasksProvider = ({ children }) => {
 		editTask,
 		removeTask,
 		duplicateTask,
+		addTagToTask,
 		addTag,
 	};
 
