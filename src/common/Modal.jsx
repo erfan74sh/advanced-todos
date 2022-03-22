@@ -155,7 +155,7 @@ const Modal = () => {
 								</li>
 								<li className="flex gap-x-4">
 									<div className="w-1/2 sm:w-1/3 lg:w-1/4 relative">
-										<AddTags />
+										<AddTags taskId={taskToEdit.id} />
 									</div>
 									<span className="w-1/2 sm:w-1/3 lg:w-1/4">tags...</span>
 								</li>
