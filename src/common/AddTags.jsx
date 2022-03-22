@@ -32,7 +32,7 @@ const AddTags = () => {
 			</div>
 			{showDropdown && (
 				<form
-					className="absolute left-0 w-full bg-white rounded-b shadow-md p-2.5 flex flex-col top-full border-t-2 z-20"
+					className="absolute left-0 w-full max-h-40 overflow-y-scroll bg-white rounded-b shadow-md p-2.5 flex flex-col top-full border-t-2 z-20"
 					// onInput={(e) => handleOnChange(e)}
 				>
 					<label className="flex px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 focus-within:ring-2 mb-1">
