@@ -7,7 +7,7 @@ const TasksProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(tasksReducer, initialState);
 
 	const addToGroup = (task) => {
-		const updatedTasks = state.concat(task);
+		const updatedTasks = state.tasks.concat(task);
 		dispatch({
 			type: "ADD_TASK_TO_GROUP",
 			payload: {
@@ -17,45 +17,52 @@ const TasksProvider = ({ children }) => {
 	};
 
 	const editTask = (id, editedTask) => {
+		const index = state.tasks.findIndex((task) => task.id === id);
+		const tempTasks = [...state.tasks];
+		tempTasks[index] = editedTask;
 		dispatch({
 			type: "EDIT_TASK",
 			payload: {
-				id,
-				editedTask
-			}
-		})
-	}
+				tasks: tempTasks,
+			},
+		});
+	};
 
 	const removeTask = (id) => {
-		const tempTasks = state.filter(task => task.id !== id);
+		const tempTasks = state.tasks.filter((task) => task.id !== id);
 		dispatch({
 			type: "REMOVE_TASK",
-			payload:{
-				tasks: tempTasks
-			}
-		})
-	}
+			payload: {
+				tasks: tempTasks,
+			},
+		});
+	};
 
 	const duplicateTask = (id) => {
-		const taskToDuplicate = state.filter(task => task.id === id)[0]
-		const index = state.findIndex(task => task.id === id);
+		const taskToDuplicate = state.tasks.filter((task) => task.id === id)[0];
+		const index = state.tasks.findIndex((task) => task.id === id);
 		const date = new Date();
-		const tempTasks = [...state]
-		tempTasks.splice(index+1, 0, {...taskToDuplicate, id: date.getTime(), createdDate: date.toLocaleString()})
+		const tempTasks = [...state.tasks];
+		tempTasks.splice(index + 1, 0, {
+			...taskToDuplicate,
+			id: date.getTime(),
+			createdDate: date.toLocaleString(),
+		});
 		dispatch({
 			type: "DUPLICATE_TASK",
 			payload: {
-				tasks: tempTasks
-			}
-		})
-	}
+				tasks: tempTasks,
+			},
+		});
+	};
 
 	const value = {
-		tasks: state,
+		tasks: state.tasks,
+		tags: state.tags,
 		addToGroup,
 		editTask,
 		removeTask,
-		duplicateTask
+		duplicateTask,
 	};
 
 	return (
