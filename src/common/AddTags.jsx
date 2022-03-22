@@ -9,9 +9,10 @@ const AddTags = () => {
 	const { tags, addTag } = useTasksContext();
 
 	const [newTagName, setNewTagName] = useState("");
-	// const handleAddNewTag = () => {
-	// 	addTag();
-	// };
+	const handleAddNewTag = () => {
+		addTag(newTagName);
+		setNewTagName("");
+	};
 	const [showDropdown, setShowDropdown] = useState(false);
 	const handleShowDropdown = () => {
 		setShowDropdown(!showDropdown);
@@ -38,6 +39,7 @@ const AddTags = () => {
 						<input
 							type="text"
 							name="newTag"
+							value={newTagName}
 							onChange={(e) => {
 								setNewTagName(e.target.value);
 							}}
@@ -46,7 +48,7 @@ const AddTags = () => {
 						/>
 						<span
 							className="hover:bg-slate-50 rounded px-1"
-							// onClick={handleAddNewTag}
+							onClick={handleAddNewTag}
 						>
 							<FontAwesomeIcon icon={faPlus} className="text-zinc-700" />
 						</span>
