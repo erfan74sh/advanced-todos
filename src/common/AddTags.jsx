@@ -5,14 +5,19 @@ import { useTasksContext } from "../providers/TasksProvider";
 // iconst
 import { faCaretDown, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-const AddTags = () => {
-	const { tags, addTag } = useTasksContext();
+const AddTags = ({ taskId }) => {
+	const { tags, addTag, addTagToTask } = useTasksContext();
 
 	const [newTagName, setNewTagName] = useState("");
 	const handleAddNewTag = () => {
 		addTag(newTagName);
 		setNewTagName("");
 	};
+
+	const handleAddTagToTask = (e) => {
+		addTagToTask(taskId, e.target.value);
+	};
+
 	const [showDropdown, setShowDropdown] = useState(false);
 	const handleShowDropdown = () => {
 		setShowDropdown(!showDropdown);
@@ -31,10 +36,7 @@ const AddTags = () => {
 				</span>
 			</div>
 			{showDropdown && (
-				<form
-					className="absolute left-0 w-full max-h-40 overflow-y-scroll bg-white rounded-b shadow-md p-2.5 flex flex-col top-full border-t-2 z-20"
-					// onInput={(e) => handleOnChange(e)}
-				>
+				<form className="absolute left-0 w-full max-h-40 overflow-y-scroll bg-white rounded-b shadow-md p-2.5 flex flex-col top-full border-t-2 z-20">
 					<label className="flex px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 focus-within:ring-2 mb-1">
 						<input
 							type="text"
@@ -48,7 +50,7 @@ const AddTags = () => {
 						/>
 						<span
 							className="hover:bg-slate-50 rounded px-1"
-							onClick={handleAddNewTag}
+							onClick={(e) => handleAddNewTag(e)}
 						>
 							<FontAwesomeIcon icon={faPlus} className="text-zinc-700" />
 						</span>
@@ -64,6 +66,7 @@ const AddTags = () => {
 									name="tags"
 									value={tag}
 									className="hidden"
+									onInput={handleAddTagToTask}
 								/>
 								<span>{tag}</span>
 							</label>
