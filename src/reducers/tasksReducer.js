@@ -1,5 +1,5 @@
 export const initialState = {
-	tags: [],
+	tags: ["Q1", "Q2", "Q3"],
 	tasks: [
 		{
 			title: "sample task title...",
