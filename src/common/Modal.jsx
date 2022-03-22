@@ -166,7 +166,8 @@ const Modal = () => {
 								value={taskToEdit.description}
 								placeholder="more description..."
 								name="description"
-								className="outline-none w-full bg-transparent hover:bg-slate-50 px-1.5 py-1 rounded-md focus:ring-2"
+								rows={4}
+								className="outline-none w-full bg-transparent hover:bg-slate-50 px-1.5 py-1 rounded-md focus:ring-2 overflow-hidden resize-none"
 								onChange={(e) => handleTaskChange(e)}
 							/>
 						</section>
