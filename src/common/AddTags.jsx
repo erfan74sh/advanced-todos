@@ -53,23 +53,22 @@ const AddTags = () => {
 							<FontAwesomeIcon icon={faPlus} className="text-zinc-700" />
 						</span>
 					</label>
-					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
-						<input type="radio" name="group" value="todo" className="hidden" />
-						<span>todo</span>
-					</label>
-					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
-						<input type="radio" name="group" value="doing" className="hidden" />
-						<span>doing</span>
-					</label>
-					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
-						<input
-							type="radio"
-							name="group"
-							value="completed"
-							className="hidden"
-						/>
-						<span>completed</span>
-					</label>
+					{tags.map((tag, idx) => {
+						return (
+							<label
+								key={idx}
+								className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 "
+							>
+								<input
+									type="radio"
+									name="tags"
+									value={tag}
+									className="hidden"
+								/>
+								<span>{tag}</span>
+							</label>
+						);
+					})}
 				</form>
 			)}
 		</>
