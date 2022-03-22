@@ -7,6 +7,7 @@ export const initialState = {
 			group: "todo",
 			id: 1,
 			createdDate: new Date().toLocaleString(),
+			tags: [],
 		},
 	],
 };
@@ -29,6 +30,9 @@ const tasksReducer = (state, action) => {
 		case "CHANGE_GROUP":
 			console.log("CHANGE_GROUP");
 			return state;
+		case "ADD_TAG_TO_TASK":
+			console.log("ADD_TAG_TO_TASK");
+			return { ...state, tasks: payload.tasks };
 		case "ADD_TAG":
 			console.log("ADD_TAG");
 			return { ...state, tags: payload.tags };
