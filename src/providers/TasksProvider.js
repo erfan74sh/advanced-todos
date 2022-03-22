@@ -56,6 +56,17 @@ const TasksProvider = ({ children }) => {
 		});
 	};
 
+	const addTag = (tagName) => {
+		const tempTags = state.tags;
+		tempTags.push(tagName);
+		dispatch({
+			type: "ADD_TAG",
+			payload: {
+				tags: tempTags,
+			},
+		});
+	};
+
 	const value = {
 		tasks: state.tasks,
 		tags: state.tags,
@@ -63,6 +74,7 @@ const TasksProvider = ({ children }) => {
 		editTask,
 		removeTask,
 		duplicateTask,
+		addTag,
 	};
 
 	return (
