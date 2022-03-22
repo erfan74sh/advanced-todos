@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// context
+import { useTasksContext } from "../providers/TasksProvider";
 // iconst
 import { faCaretDown, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const AddTags = () => {
+	const { tags, addTag } = useTasksContext();
+
+	const [newTagName, setNewTagName] = useState("");
+	// const handleAddNewTag = () => {
+	// 	addTag();
+	// };
 	const [showDropdown, setShowDropdown] = useState(false);
 	const handleShowDropdown = () => {
 		setShowDropdown(!showDropdown);
@@ -29,10 +37,17 @@ const AddTags = () => {
 					<label className="flex px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 focus-within:ring-2 mb-1">
 						<input
 							type="text"
+							name="newTag"
+							onChange={(e) => {
+								setNewTagName(e.target.value);
+							}}
 							className="w-full bg-transparent outline-none text-sm"
 							placeholder="add new tag..."
 						/>
-						<span className="hover:bg-slate-50 rounded px-1">
+						<span
+							className="hover:bg-slate-50 rounded px-1"
+							// onClick={handleAddNewTag}
+						>
 							<FontAwesomeIcon icon={faPlus} className="text-zinc-700" />
 						</span>
 					</label>
