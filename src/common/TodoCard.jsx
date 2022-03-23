@@ -2,8 +2,9 @@ import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // components
 import MoreOptions from "./MoreOptions";
+import Tags from "./Tags";
 
-const TodoCard = ({ title, description, id }) => {
+const TodoCard = ({ title, description, id, tags }) => {
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const dropDownRef = useRef(null);
@@ -22,7 +23,7 @@ const TodoCard = ({ title, description, id }) => {
 			className="bg-white rounded-md py-2 px-2.5 cursor-pointer"
 			onClick={(e) => handleClickOnCard(e)}
 		>
-			<article>
+			<article className="overflow-hidden flex flex-col gap-y-1">
 				<header>
 					<h3 className="font-medium flex justify-between gap-x-0.5 relative">
 						<span className="pr-6">{title}</span>
@@ -36,6 +37,9 @@ const TodoCard = ({ title, description, id }) => {
 					</h3>
 				</header>
 				<section>{description}</section>
+				<section>
+					<Tags tags={tags} />
+				</section>
 			</article>
 		</li>
 	);
