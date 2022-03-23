@@ -9,28 +9,13 @@ import {
 	faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
-const AddTags = ({ taskId }) => {
-	const { tags, addTag, addTagToTask } = useTasksContext();
+const AddTags = ({ handleCheckedTags, checkedTags }) => {
+	const { tags, addTag } = useTasksContext();
 
 	const [newTagName, setNewTagName] = useState("");
 	const handleAddNewTag = () => {
 		addTag(newTagName);
 		setNewTagName("");
-	};
-
-	const handleAddTagToTask = (e) => {
-		addTagToTask(taskId, e.target.value);
-	};
-
-	const [checkedTags, setCheckedTags] = useState([]);
-	const handleCheckedTags = (e) => {
-		let tempCheckedTags = [...checkedTags];
-		if (e.target.checked) {
-			tempCheckedTags.push(e.target.value);
-		} else {
-			tempCheckedTags.splice(checkedTags.indexOf(e.target.value), 1);
-		}
-		setCheckedTags(tempCheckedTags);
 	};
 
 	const [showDropdown, setShowDropdown] = useState(false);
@@ -82,8 +67,8 @@ const AddTags = ({ taskId }) => {
 									type="checkbox"
 									name="tags"
 									value={tag}
+									checked={checkedTags.includes(tag)}
 									className="hidden"
-									onInput={handleAddTagToTask}
 									onChange={(e) => handleCheckedTags(e)}
 								/>
 								<span>{tag}</span>
