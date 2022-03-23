@@ -59,20 +59,21 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 						return (
 							<label
 								key={idx}
-								className={`flex justify-between px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ${
-									checkedTags.includes(tag) && "font-medium"
-								}`}
+								className={`flex justify-between px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 
+								// todo:
+								${checkedTags.includes(tag.tagName) && "font-medium"}
+								`}
 							>
 								<input
 									type="checkbox"
 									name="tags"
-									value={tag}
-									checked={checkedTags.includes(tag)}
+									value={tag.tagName}
+									checked={checkedTags.includes(tag.tagName)}
 									className="hidden"
 									onChange={(e) => handleCheckedTags(e)}
 								/>
-								<span>{tag}</span>
-								{checkedTags.includes(tag) && (
+								<span>{tag.tagName}</span>
+								{checkedTags.includes(tag.tagName) && (
 									<span>
 										<FontAwesomeIcon icon={faCheck} className="text-sm" />
 									</span>
