@@ -160,8 +160,10 @@ const Modal = () => {
 						</header>
 						<section className="border-b-2 pb-2">
 							<ul className="flex flex-col gap-y-3">
-								<li className="flex gap-x-4">
-									<span className="w-1/2 sm:w-1/3 lg:w-1/4">created date:</span>
+								<li className="flex gap-x-4 items-center">
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4 px-2 py-1 text-zinc-600">
+										created date:
+									</span>
 									<span className="w-1/2 sm:w-1/3 lg:w-1/4">
 										{taskToEdit.createdDate}
 									</span>
@@ -173,7 +175,7 @@ const Modal = () => {
 											handleTaskChange={handleTaskChange}
 										/>
 									</div>
-									<span className="w-1/2 sm:w-1/3 lg:w-1/4">
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4 flex items-center">
 										{taskToEdit.group}
 									</span>
 								</li>
@@ -184,7 +186,7 @@ const Modal = () => {
 											checkedTags={checkedTags}
 										/>
 									</div>
-									<div className="w-1/2 sm:w-1/3 lg:w-1/4">
+									<div className="w-1/2 sm:w-1/3 lg:w-1/4 flex items-center">
 										<Tags currentTask={taskToEdit} />
 									</div>
 								</li>
