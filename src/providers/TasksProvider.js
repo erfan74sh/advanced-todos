@@ -75,9 +75,9 @@ const TasksProvider = ({ children }) => {
 		}
 	};
 
-	const addTag = (tagName) => {
+	const addTag = (newTag) => {
 		const tempTags = state.tags;
-		tempTags.push(tagName);
+		tempTags.push(newTag);
 		dispatch({
 			type: "ADD_TAG",
 			payload: {
