@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MoreOptions from "./MoreOptions";
 import AddTags from "./AddTags";
 import MoveToGroup from "./MoveToGroup";
+import Tags from "./Tags";
 // hooks
 import useOnClickOutside from "../hooks/useOnClickOutside";
 // context
@@ -157,7 +158,9 @@ const Modal = () => {
 									<div className="w-1/2 sm:w-1/3 lg:w-1/4 relative">
 										<AddTags taskId={taskToEdit.id} />
 									</div>
-									<span className="w-1/2 sm:w-1/3 lg:w-1/4">tags...</span>
+									<div className="w-1/2 sm:w-1/3 lg:w-1/4">
+										<Tags currentTask={taskToEdit} />
+									</div>
 								</li>
 							</ul>
 						</section>
