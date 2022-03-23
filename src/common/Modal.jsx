@@ -53,6 +53,8 @@ const Modal = () => {
 		}
 	}, [tasks, taskToEdit]);
 
+	const [isTaskChanged, setIsTaskChanged] = useState(false);
+
 	const [checkedTags, setCheckedTags] = useState([]);
 	useEffect(() => {
 		setCheckedTags([...taskToEdit.tags]);
@@ -70,6 +72,9 @@ const Modal = () => {
 			...taskToEdit,
 			tags: [...tempCheckedTags],
 		});
+		if (!isTaskChanged) {
+			setIsTaskChanged(true);
+		}
 	};
 
 	const onClickOutside = () => {
@@ -83,6 +88,9 @@ const Modal = () => {
 			...taskToEdit,
 			[e.target.name]: e.target.value,
 		});
+		if (!isTaskChanged) {
+			setIsTaskChanged(true);
+		}
 	};
 
 	const handleTaskUpdate = () => {
@@ -202,7 +210,22 @@ const Modal = () => {
 								onChange={(e) => handleTaskChange(e)}
 							/>
 						</section>
-						<button onClick={() => handleTaskUpdate()}>update</button>
+						<section className="self-end flex items-center gap-x-2">
+							<button
+								onClick={() => navigate("/")}
+								className="border-red-300 border-2 px-6 py-1.5 rounded-md"
+							>
+								Cancel
+							</button>
+							{isTaskChanged && (
+								<button
+									onClick={() => handleTaskUpdate()}
+									className="bg-blue-300 border-2 border-transparent px-6 py-1.5 rounded-md"
+								>
+									Update
+								</button>
+							)}
+						</section>
 					</article>
 				</div>
 			</div>
