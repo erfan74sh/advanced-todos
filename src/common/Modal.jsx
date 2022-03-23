@@ -129,10 +129,10 @@ const Modal = () => {
 		<div className="fixed w-screen h-screen bg-gray-300 z-10 bg-opacity-60 backdrop-filter backdrop-blur-sm">
 			<div className="w-full h-full sm:px-10 flex items-center justify-center">
 				<div
-					className="w-full md:w-4/5 lg:w-3/5 h-2/3 overflow-y-scroll bg-white shadow-2xl rounded-lg px-5 py-2 "
+					className="w-full md:w-4/5 lg:w-3/5 max-h-full overflow-y-auto bg-white shadow-2xl rounded-lg px-5 pb-3"
 					ref={modalBgRef}
 				>
-					<nav className="flex justify-between items-center">
+					<nav className="flex justify-between items-center sticky top-0 bg-white pt-3 z-50">
 						<div className="flex items-center gap-x-1">
 							<button
 								className={`w-6 h-6 flex items-center justify-center hover:bg-zinc-100 rounded transition-colors text-zinc-700 ${
@@ -153,7 +153,7 @@ const Modal = () => {
 						</div>
 						<MoreOptions />
 					</nav>
-					<article className="flex flex-col gap-y-4 mt-10 px-10 py-5">
+					<article className="flex flex-col gap-y-4 mt-6 px-10 py-5">
 						<header>
 							<form>
 								<input
