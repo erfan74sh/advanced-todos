@@ -2,19 +2,32 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // context
 import { useTasksContext } from "../providers/TasksProvider";
-// iconst
+// icons
 import {
 	faCaretDown,
 	faCheck,
 	faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
+const bgColors = [
+	"#e5e5e5",
+	"#a3a3a3",
+	"#fecaca",
+	"#fde68a",
+	"#d9f99d",
+	"#bbf7d0",
+	"#bae6fd",
+	"#c7d2fe",
+	"#e9d5ff",
+	"#fbcfe8",
+];
+
 const AddTags = ({ handleCheckedTags, checkedTags }) => {
 	const { tags, addTag } = useTasksContext();
 
 	const [newTagName, setNewTagName] = useState("");
 	const handleAddNewTag = () => {
-		addTag(newTagName);
+		addTag({ tagName: newTagName, color: bgColors[9] });
 		setNewTagName("");
 	};
 
