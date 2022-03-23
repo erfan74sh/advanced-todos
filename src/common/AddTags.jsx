@@ -6,6 +6,7 @@ import { useTasksContext } from "../providers/TasksProvider";
 import {
 	faCaretDown,
 	faCheck,
+	faEllipsisVertical,
 	faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -72,7 +73,7 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 						return (
 							<label
 								key={idx}
-								className={`flex justify-between px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 
+								className={`group flex justify-between px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 
 								// todo:
 								${checkedTags.includes(tag.tagName) && "font-medium"}
 								`}
@@ -85,12 +86,23 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 									className="hidden"
 									onChange={(e) => handleCheckedTags(e)}
 								/>
-								<span>{tag.tagName}</span>
-								{checkedTags.includes(tag.tagName) && (
-									<span>
+								{/* {checkedTags.includes(tag.tagName) && (
+									<span className="mr-1">
 										<FontAwesomeIcon icon={faCheck} className="text-sm" />
 									</span>
-								)}
+								)} */}
+								<span
+									className="px-1 rounded"
+									style={{
+										backgroundColor:
+											checkedTags.includes(tag.tagName) && tag.color,
+									}}
+								>
+									{tag.tagName}
+								</span>
+								<span className="group-hover:opacity-100 hover:bg-gray-400 opacity-0 transition-all rounded-sm px-1 ml-auto">
+									<FontAwesomeIcon icon={faEllipsisVertical} />
+								</span>
 							</label>
 						);
 					})}
