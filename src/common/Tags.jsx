@@ -8,11 +8,11 @@ const Tag = ({ children }) => {
 	);
 };
 
-const Tags = ({ currentTask }) => {
+const Tags = ({ tags }) => {
 	return (
 		<ul className="flex gap-x-2">
-			{currentTask.tags &&
-				currentTask.tags.map((tag, idx) => {
+			{tags &&
+				tags.map((tag, idx) => {
 					return <Tag key={idx}>{tag}</Tag>;
 				})}
 		</ul>
