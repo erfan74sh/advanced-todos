@@ -1,5 +1,9 @@
 export const initialState = {
-	tags: ["Q1", "Q2", "Q3"],
+	tags: [
+		{ tagName: "Q1", color: "#fecaca" },
+		{ tagName: "Q2", color: "#fef08a" },
+		{ tagName: "Q3", color: "#d9f99d" },
+	],
 	tasks: [
 		{
 			title: "sample task title...",
