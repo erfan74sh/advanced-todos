@@ -10,7 +10,7 @@ const Tag = ({ children }) => {
 
 const Tags = ({ tags }) => {
 	return (
-		<ul className="flex gap-x-2">
+		<ul className="flex gap-x-1.5 flex-wrap gap-y-1">
 			{tags &&
 				tags.map((tag, idx) => {
 					return <Tag key={idx}>{tag}</Tag>;
