@@ -3,7 +3,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // context
 import { useTasksContext } from "../providers/TasksProvider";
 // iconst
-import { faCaretDown, faPlus } from "@fortawesome/free-solid-svg-icons";
+import {
+	faCaretDown,
+	faCheck,
+	faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 
 const AddTags = ({ taskId }) => {
 	const { tags, addTag, addTagToTask } = useTasksContext();
@@ -70,7 +74,9 @@ const AddTags = ({ taskId }) => {
 						return (
 							<label
 								key={idx}
-								className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 "
+								className={`flex justify-between px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ${
+									checkedTags.includes(tag) && "font-medium"
+								}`}
 							>
 								<input
 									type="checkbox"
@@ -81,6 +87,11 @@ const AddTags = ({ taskId }) => {
 									onChange={(e) => handleCheckedTags(e)}
 								/>
 								<span>{tag}</span>
+								{checkedTags.includes(tag) && (
+									<span>
+										<FontAwesomeIcon icon={faCheck} className="text-sm" />
+									</span>
+								)}
 							</label>
 						);
 					})}
