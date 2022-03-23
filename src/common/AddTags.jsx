@@ -23,6 +23,22 @@ const bgColors = [
 	"#fbcfe8",
 ];
 
+const ColorDropdown = () => {
+	return (
+		<ul className="flex flex-col gap-y-1 p-1 rounded-md absolute top-0 z-50">
+			{bgColors.map((color, idx) => {
+				return (
+					<li
+						key={idx}
+						className="w-20 h-5 rounded"
+						style={{ backgroundColor: color }}
+					></li>
+				);
+			})}
+		</ul>
+	);
+};
+
 const AddTags = ({ handleCheckedTags, checkedTags }) => {
 	const { tags, addTag } = useTasksContext();
 
@@ -100,9 +116,10 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 								>
 									{tag.tagName}
 								</span>
-								<span className="group-hover:opacity-100 hover:bg-gray-400 opacity-0 transition-all rounded-sm px-1 ml-auto">
+								<div className="relative group-hover:opacity-100 hover:bg-gray-400 opacity-0 transition-all rounded-sm px-1 ml-auto">
 									<FontAwesomeIcon icon={faEllipsisVertical} />
-								</span>
+									<ColorDropdown />
+								</div>
 							</label>
 						);
 					})}
