@@ -195,7 +195,7 @@ const Modal = () => {
 										/>
 									</div>
 									<div className="w-1/2 sm:w-1/3 lg:w-1/4 flex items-center">
-										<Tags currentTask={taskToEdit} />
+										<Tags tags={taskToEdit.tags} />
 									</div>
 								</li>
 							</ul>
