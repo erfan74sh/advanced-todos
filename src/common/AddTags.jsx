@@ -18,6 +18,17 @@ const AddTags = ({ taskId }) => {
 		addTagToTask(taskId, e.target.value);
 	};
 
+	const [checkedTags, setCheckedTags] = useState([]);
+	const handleCheckedTags = (e) => {
+		let tempCheckedTags = [...checkedTags];
+		if (e.target.checked) {
+			tempCheckedTags.push(e.target.value);
+		} else {
+			tempCheckedTags.splice(checkedTags.indexOf(e.target.value), 1);
+		}
+		setCheckedTags(tempCheckedTags);
+	};
+
 	const [showDropdown, setShowDropdown] = useState(false);
 	const handleShowDropdown = () => {
 		setShowDropdown(!showDropdown);
@@ -62,11 +73,12 @@ const AddTags = ({ taskId }) => {
 								className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 "
 							>
 								<input
-									type="radio"
+									type="checkbox"
 									name="tags"
 									value={tag}
 									className="hidden"
 									onInput={handleAddTagToTask}
+									onChange={(e) => handleCheckedTags(e)}
 								/>
 								<span>{tag}</span>
 							</label>
