@@ -23,6 +23,7 @@ const Modal = () => {
 		title: "",
 		description: "",
 		group: "",
+		tags: [],
 	});
 	useEffect(() => {
 		const thisTask = tasks.filter((task) => task.id === parseInt(taskId))?.[0];
@@ -52,6 +53,25 @@ const Modal = () => {
 		}
 	}, [tasks, taskToEdit]);
 
+	const [checkedTags, setCheckedTags] = useState([]);
+	useEffect(() => {
+		setCheckedTags([...taskToEdit.tags]);
+	}, [taskToEdit]);
+
+	const handleCheckedTags = (e) => {
+		let tempCheckedTags = [...checkedTags];
+		if (e.target.checked) {
+			tempCheckedTags.push(e.target.value);
+		} else {
+			tempCheckedTags.splice(checkedTags.indexOf(e.target.value), 1);
+		}
+		setCheckedTags(tempCheckedTags);
+		setTaskToEdit({
+			...taskToEdit,
+			tags: [...tempCheckedTags],
+		});
+	};
+
 	const onClickOutside = () => {
 		navigate("/");
 	};
@@ -59,7 +79,10 @@ const Modal = () => {
 	useOnClickOutside(modalBgRef, onClickOutside);
 
 	const handleTaskChange = (e) => {
-		setTaskToEdit({ ...taskToEdit, [e.target.name]: e.target.value });
+		setTaskToEdit({
+			...taskToEdit,
+			[e.target.name]: e.target.value,
+		});
 	};
 
 	const handleTaskUpdate = () => {
@@ -156,7 +179,10 @@ const Modal = () => {
 								</li>
 								<li className="flex gap-x-4">
 									<div className="w-1/2 sm:w-1/3 lg:w-1/4 relative">
-										<AddTags taskId={taskToEdit.id} />
+										<AddTags
+											handleCheckedTags={handleCheckedTags}
+											checkedTags={checkedTags}
+										/>
 									</div>
 									<div className="w-1/2 sm:w-1/3 lg:w-1/4">
 										<Tags currentTask={taskToEdit} />
