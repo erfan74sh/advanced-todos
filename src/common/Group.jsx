@@ -13,6 +13,8 @@ const Group = ({ groupName }) => {
 		setTasksInGroup(filteredTasks);
 	}, [tasks, groupName]);
 
+	const [isDraggingOver, setIsDraggingOver] = useState(false);
+
 	const handleDrop = (e) => {
 		e.preventDefault();
 		const cardId = Number(e.dataTransfer.getData("cardId"));
@@ -21,11 +23,18 @@ const Group = ({ groupName }) => {
 			tempTask = { ...tempTask, group: groupName, tags: [...tempTask.tags] };
 			editTask(cardId, tempTask);
 		}
+		setIsDraggingOver(false);
 	};
 
 	const handleDragOver = (e) => {
 		e.preventDefault();
 		e.dataTransfer.dropEffect = "move";
+		setIsDraggingOver(true);
+	};
+
+	const handleDragLeave = (e) => {
+		e.preventDefault();
+		setIsDraggingOver(false);
 	};
 
 	return (
@@ -38,9 +47,12 @@ const Group = ({ groupName }) => {
 			</header>
 			<NewTodo groupName={groupName} />
 			<ul
-				className="flex flex-col gap-y-2.5 h-full droppable"
+				className={`flex flex-col gap-y-2.5 h-full droppable rounded-md transition-all ${
+					isDraggingOver ? " bg-white bg-opacity-70" : "bg-transparent"
+				}`}
 				onDrop={handleDrop}
 				onDragOver={handleDragOver}
+				onDragLeave={handleDragLeave}
 			>
 				{tasksInGroup.map((task, idx) => {
 					return <TodoCard {...task} key={idx} />;
