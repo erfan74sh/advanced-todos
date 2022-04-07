@@ -23,6 +23,7 @@ const Group = ({ groupName }) => {
 
 	const handleDragOver = (e) => {
 		e.preventDefault();
+		e.dataTransfer.dropEffect = "move";
 	};
 
 	return (
