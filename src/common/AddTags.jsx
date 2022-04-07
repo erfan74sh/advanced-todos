@@ -5,7 +5,7 @@ import { useTasksContext } from "../providers/TasksProvider";
 // icons
 import {
 	faCaretDown,
-	faCheck,
+	// faCheck,
 	faEllipsisVertical,
 	faPlus,
 } from "@fortawesome/free-solid-svg-icons";
