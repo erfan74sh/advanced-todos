@@ -18,11 +18,16 @@ const TodoCard = ({ title, description, id, tags }) => {
 		return;
 	};
 
+	const handleDragStart = (e) => {
+		e.dataTransfer.setData("cardId", id);
+	};
+
 	return (
 		<li
 			className="bg-white rounded-md py-2 px-2.5 cursor-pointer"
 			onClick={(e) => handleClickOnCard(e)}
-			draggable
+			draggable="true"
+			onDragStart={(e) => handleDragStart(e)}
 		>
 			<article className="flex flex-col gap-y-1">
 				<header>
