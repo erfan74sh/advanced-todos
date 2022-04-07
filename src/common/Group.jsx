@@ -34,7 +34,20 @@ const Group = ({ groupName, draggedRef }) => {
 
 	const handleDragEnter = (e, id) => {
 		e.preventDefault();
-		console.log(draggedRef.current, id);
+		if (draggedRef.current !== id) {
+			const draggedTask = tasks.filter(
+				(task) => task.id === draggedRef.current
+			)[0];
+			const draggedTaskIndex = tasksInGroup.findIndex(
+				(task) => task.id === draggedRef.current
+			);
+			const targetIndex = tasksInGroup.findIndex((task) => task.id === id);
+			let tempTasksInGroup = [...tasksInGroup];
+			tempTasksInGroup.splice(draggedTaskIndex, 1);
+			tempTasksInGroup.splice(targetIndex, 0, draggedTask);
+			console.log(tempTasksInGroup);
+			setTasksInGroup(tempTasksInGroup);
+		}
 	};
 
 	const handleDragLeave = (e) => {
