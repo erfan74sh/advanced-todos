@@ -22,6 +22,7 @@ const TodoCard = ({ title, description, id, tags }) => {
 		<li
 			className="bg-white rounded-md py-2 px-2.5 cursor-pointer"
 			onClick={(e) => handleClickOnCard(e)}
+			draggable
 		>
 			<article className="flex flex-col gap-y-1">
 				<header>
