@@ -4,7 +4,7 @@ import TodoCard from "./TodoCard";
 import NewTodo from "./NewTodo";
 import { useTasksContext } from "../providers/TasksProvider";
 
-const Group = ({ groupName }) => {
+const Group = ({ groupName, draggedRef }) => {
 	const { tasks, editTask } = useTasksContext();
 
 	const [tasksInGroup, setTasksInGroup] = useState([]);
@@ -32,9 +32,19 @@ const Group = ({ groupName }) => {
 		setIsDraggingOver(true);
 	};
 
+	const handleDragEnter = (e, id) => {
+		e.preventDefault();
+		console.log(draggedRef.current, id);
+	};
+
 	const handleDragLeave = (e) => {
 		e.preventDefault();
 		setIsDraggingOver(false);
+	};
+
+	const handleDragStart = (e, cardId) => {
+		e.dataTransfer.setData("cardId", cardId);
+		draggedRef.current = cardId;
 	};
 
 	return (
@@ -55,7 +65,16 @@ const Group = ({ groupName }) => {
 				onDragLeave={handleDragLeave}
 			>
 				{tasksInGroup.map((task, idx) => {
-					return <TodoCard {...task} key={idx} />;
+					return (
+						<TodoCard
+							{...task}
+							key={idx}
+							handleDragStart={(e) => {
+								handleDragStart(e, task.id);
+							}}
+							handleDragEnter={(e) => handleDragEnter(e, task.id)}
+						/>
+					);
 				})}
 			</ul>
 		</article>
