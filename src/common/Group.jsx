@@ -17,8 +17,10 @@ const Group = ({ groupName }) => {
 		e.preventDefault();
 		const cardId = Number(e.dataTransfer.getData("cardId"));
 		let tempTask = tasks.filter((task) => task.id === cardId)[0];
-		tempTask = { ...tempTask, group: groupName, tags: [...tempTask.tags] };
-		editTask(cardId, tempTask);
+		if (tempTask.group !== groupName) {
+			tempTask = { ...tempTask, group: groupName, tags: [...tempTask.tags] };
+			editTask(cardId, tempTask);
+		}
 	};
 
 	const handleDragOver = (e) => {
