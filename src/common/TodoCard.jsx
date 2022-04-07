@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 import MoreOptions from "./MoreOptions";
 import Tags from "./Tags";
 
-const TodoCard = ({ title, description, id, tags }) => {
+const TodoCard = ({
+	title,
+	description,
+	id,
+	tags,
+	handleDragStart,
+	handleDragEnter,
+}) => {
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const dropDownRef = useRef(null);
@@ -18,16 +25,13 @@ const TodoCard = ({ title, description, id, tags }) => {
 		return;
 	};
 
-	const handleDragStart = (e) => {
-		e.dataTransfer.setData("cardId", id);
-	};
-
 	return (
 		<li
 			className="bg-white rounded-md py-2 px-2.5 cursor-pointer"
 			onClick={(e) => handleClickOnCard(e)}
 			draggable="true"
-			onDragStart={(e) => handleDragStart(e)}
+			onDragStart={handleDragStart}
+			onDragEnter={handleDragEnter}
 		>
 			<article className="flex flex-col gap-y-1">
 				<header>
