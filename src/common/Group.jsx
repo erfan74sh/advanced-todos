@@ -5,7 +5,7 @@ import NewTodo from "./NewTodo";
 import { useTasksContext } from "../providers/TasksProvider";
 
 const Group = ({ groupName }) => {
-	const { tasks } = useTasksContext();
+	const { tasks, editTask } = useTasksContext();
 
 	const [tasksInGroup, setTasksInGroup] = useState([]);
 	useEffect(() => {
@@ -15,7 +15,10 @@ const Group = ({ groupName }) => {
 
 	const handleDrop = (e) => {
 		e.preventDefault();
-		const cardId = e.dataTransfer.getData("cardId");
+		const cardId = Number(e.dataTransfer.getData("cardId"));
+		let tempTask = tasks.filter((task) => task.id === cardId)[0];
+		tempTask = { ...tempTask, group: groupName, tags: [...tempTask.tags] };
+		editTask(cardId, tempTask);
 	};
 
 	const handleDragOver = (e) => {
