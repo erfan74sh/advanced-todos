@@ -15,6 +15,8 @@ const Group = ({ groupName, draggedRef }) => {
 
 	const [isDraggingOver, setIsDraggingOver] = useState(false);
 
+	const [showDragIndicator, setShowDragIndicator] = useState(false);
+
 	const handleDrop = (e) => {
 		e.preventDefault();
 		const cardId = Number(e.dataTransfer.getData("cardId"));
@@ -24,12 +26,14 @@ const Group = ({ groupName, draggedRef }) => {
 			editTask(cardId, tempTask);
 		}
 		setIsDraggingOver(false);
+		setShowDragIndicator(false);
 	};
 
 	const handleDragOver = (e) => {
 		e.preventDefault();
 		e.dataTransfer.dropEffect = "move";
 		setIsDraggingOver(true);
+		setShowDragIndicator(true);
 	};
 
 	const [indicatorPos, setIndicatorPos] = useState(0);
@@ -79,6 +83,7 @@ const Group = ({ groupName, draggedRef }) => {
 	const handleDragLeave = (e) => {
 		e.preventDefault();
 		setIsDraggingOver(false);
+		setShowDragIndicator(false);
 	};
 
 	const handleDragStart = (e, cardId) => {
@@ -106,10 +111,12 @@ const Group = ({ groupName, draggedRef }) => {
 				onDragOver={handleDragOver}
 				onDragLeave={handleDragLeave}
 			>
-				<span
-					style={{ top: -indicatorPos }}
-					className="drag-indicator w-full block h-1 bg-opacity-60 ring-blue-100 bg-sky-400 absolute rounded-full transform -translate-y-1/2 left-0"
-				></span>
+				{showDragIndicator && (
+					<span
+						style={{ top: -indicatorPos }}
+						className="drag-indicator w-full block h-1 bg-opacity-60 ring-blue-100 bg-sky-400 absolute rounded-full transform -translate-y-1/2 left-0"
+					></span>
+				)}
 				{tasksInGroup.map((task, idx) => {
 					return (
 						<TodoCard
