@@ -27,7 +27,7 @@ const TodoCard = ({
 
 	return (
 		<li
-			className="bg-white rounded-md py-2 px-2.5 cursor-pointer"
+			className="bg-white rounded-md py-2 px-2.5 cursor-pointer relative draggable"
 			onClick={(e) => handleClickOnCard(e)}
 			draggable="true"
 			onDragStart={handleDragStart}
@@ -54,6 +54,7 @@ const TodoCard = ({
 					</section>
 				)}
 			</article>
+			<span className="block w-full h-0.5 ring-1 ring-blue-100 bg-sky-400 absolute rounded-full transform -translate-y-1.5 left-0 top-0"></span>
 		</li>
 	);
 };
