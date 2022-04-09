@@ -32,6 +32,7 @@ const TodoCard = ({
 			draggable="true"
 			onDragStart={handleDragStart}
 			onDragEnter={handleDragEnter}
+			id={id}
 		>
 			<article className="flex flex-col gap-y-1">
 				<header>
