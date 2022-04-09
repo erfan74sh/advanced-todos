@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 // components
 import TodoCard from "./TodoCard";
 import NewTodo from "./NewTodo";
@@ -12,6 +12,8 @@ const Group = ({ groupName, draggedRef }) => {
 		const filteredTasks = tasks.filter((task) => task.group === groupName);
 		setTasksInGroup(filteredTasks);
 	}, [tasks, groupName]);
+
+	let draggedTargetRef = useRef();
 
 	const [isDraggingOver, setIsDraggingOver] = useState(false);
 
@@ -27,6 +29,7 @@ const Group = ({ groupName, draggedRef }) => {
 		}
 		setIsDraggingOver(false);
 		setShowDragIndicator(false);
+		reOrderCardIndex(draggedTargetRef.current);
 	};
 
 	const handleDragOver = (e) => {
@@ -40,18 +43,8 @@ const Group = ({ groupName, draggedRef }) => {
 
 	const handleDragEnter = (e, id) => {
 		e.preventDefault();
+		draggedTargetRef.current = id;
 		if (draggedRef.current !== id) {
-			const draggedTask = tasks.filter(
-				(task) => task.id === draggedRef.current
-			)[0];
-			const draggedTaskIndex = tasksInGroup.findIndex(
-				(task) => task.id === draggedRef.current
-			);
-			const targetIndex = tasksInGroup.findIndex((task) => task.id === id);
-			let tempTasksInGroup = [...tasksInGroup];
-			tempTasksInGroup.splice(draggedTaskIndex, 1);
-			tempTasksInGroup.splice(targetIndex, 0, draggedTask);
-			// setTasksInGroup(tempTasksInGroup);
 			const { dragPosition, dragTargetCard } = getDragPosition(id, e.clientY);
 			const dragIndicator = document
 				.getElementById(groupName)
@@ -78,6 +71,22 @@ const Group = ({ groupName, draggedRef }) => {
 		const dragPosition =
 			y - (targetCardElementBox.top + targetCardElementBox.height / 2);
 		return { dragPosition, dragTargetCard };
+	};
+
+	const reOrderCardIndex = (draggedTargetId) => {
+		const draggedTask = tasks.filter(
+			(task) => task.id === draggedRef.current
+		)[0];
+		const draggedTaskIndex = tasksInGroup.findIndex(
+			(task) => task.id === draggedRef.current
+		);
+		const targetIndex = tasksInGroup.findIndex(
+			(task) => task.id === draggedTargetId
+		);
+		let tempTasksInGroup = [...tasksInGroup];
+		tempTasksInGroup.splice(draggedTaskIndex, 1);
+		tempTasksInGroup.splice(targetIndex, 0, draggedTask);
+		setTasksInGroup(tempTasksInGroup);
 	};
 
 	const handleDragLeave = (e) => {
