@@ -45,9 +45,17 @@ const Group = ({ groupName, draggedRef }) => {
 			let tempTasksInGroup = [...tasksInGroup];
 			tempTasksInGroup.splice(draggedTaskIndex, 1);
 			tempTasksInGroup.splice(targetIndex, 0, draggedTask);
-			console.log(tempTasksInGroup);
-			setTasksInGroup(tempTasksInGroup);
+			// setTasksInGroup(tempTasksInGroup);
+			console.log(getDragPosition(id, e.clientY));
 		}
+	};
+
+	const getDragPosition = (id, y) => {
+		const targetCardElement = document.getElementById(id);
+		const targetCardElementBox = targetCardElement.getBoundingClientRect();
+		const dragPosition =
+			y - (targetCardElementBox.top + targetCardElementBox.height / 2);
+		return { dragPosition, targetCardElement };
 	};
 
 	const handleDragLeave = (e) => {
@@ -61,7 +69,10 @@ const Group = ({ groupName, draggedRef }) => {
 	};
 
 	return (
-		<article className="w-72 bg-blue-50 rounded-xl p-4 flex flex-col gap-y-3 min-h-screen">
+		<article
+			className="w-72 bg-blue-50 rounded-xl p-4 flex flex-col gap-y-3 min-h-screen"
+			id={groupName}
+		>
 			<header className="flex justify-between items-center">
 				<h2 className="font-medium capitalize">{groupName}</h2>
 				<span className="py-0.5 px-2 max-w-full rounded bg-blue-100 text-sm text-sky-900">
