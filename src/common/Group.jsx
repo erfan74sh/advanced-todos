@@ -32,6 +32,8 @@ const Group = ({ groupName, draggedRef }) => {
 		setIsDraggingOver(true);
 	};
 
+	const [indicatorPos, setIndicatorPos] = useState(0);
+
 	const handleDragEnter = (e, id) => {
 		e.preventDefault();
 		if (draggedRef.current !== id) {
@@ -46,16 +48,32 @@ const Group = ({ groupName, draggedRef }) => {
 			tempTasksInGroup.splice(draggedTaskIndex, 1);
 			tempTasksInGroup.splice(targetIndex, 0, draggedTask);
 			// setTasksInGroup(tempTasksInGroup);
-			console.log(getDragPosition(id, e.clientY));
+			const { dragPosition, dragTargetCard } = getDragPosition(id, e.clientY);
+			const dragIndicator = document
+				.getElementById(groupName)
+				.getElementsByClassName("drag-indicator")[0];
+			const targetCardElementBox = dragTargetCard.getBoundingClientRect();
+			const currentDropZone = document
+				.getElementById(groupName)
+				.getElementsByClassName("droppable")[0]
+				.getBoundingClientRect();
+			let indicatorPosition;
+			if (dragPosition < 0) {
+				indicatorPosition = currentDropZone.top - targetCardElementBox.top + 6;
+			} else {
+				indicatorPosition =
+					currentDropZone.top - targetCardElementBox.bottom - 6;
+			}
+			setIndicatorPos(indicatorPosition);
 		}
 	};
 
 	const getDragPosition = (id, y) => {
-		const targetCardElement = document.getElementById(id);
-		const targetCardElementBox = targetCardElement.getBoundingClientRect();
+		const dragTargetCard = document.getElementById(id);
+		const targetCardElementBox = dragTargetCard.getBoundingClientRect();
 		const dragPosition =
 			y - (targetCardElementBox.top + targetCardElementBox.height / 2);
-		return { dragPosition, targetCardElement };
+		return { dragPosition, dragTargetCard };
 	};
 
 	const handleDragLeave = (e) => {
@@ -81,13 +99,17 @@ const Group = ({ groupName, draggedRef }) => {
 			</header>
 			<NewTodo groupName={groupName} />
 			<ul
-				className={`flex flex-col gap-y-2.5 h-full droppable rounded-md transition-all ${
+				className={`flex flex-col gap-y-3 h-full droppable rounded-md transition-all relative ${
 					isDraggingOver ? " bg-white bg-opacity-70" : "bg-transparent"
 				}`}
 				onDrop={handleDrop}
 				onDragOver={handleDragOver}
 				onDragLeave={handleDragLeave}
 			>
+				<span
+					style={{ top: -indicatorPos }}
+					className="drag-indicator w-full block h-1 bg-opacity-60 ring-blue-100 bg-sky-400 absolute rounded-full transform -translate-y-1/2 left-0"
+				></span>
 				{tasksInGroup.map((task, idx) => {
 					return (
 						<TodoCard
