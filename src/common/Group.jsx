@@ -4,14 +4,8 @@ import TodoCard from "./TodoCard";
 import NewTodo from "./NewTodo";
 import { useTasksContext } from "../providers/TasksProvider";
 
-const Group = ({ groupName, draggedRef }) => {
+const Group = ({ groupName, draggedRef, tasksInGroup }) => {
 	const { tasks, editTask } = useTasksContext();
-
-	const [tasksInGroup, setTasksInGroup] = useState([]);
-	useEffect(() => {
-		const filteredTasks = tasks.filter((task) => task.group === groupName);
-		setTasksInGroup(filteredTasks);
-	}, [tasks, groupName]);
 
 	let draggedTargetRef = useRef();
 
@@ -86,7 +80,7 @@ const Group = ({ groupName, draggedRef }) => {
 		let tempTasksInGroup = [...tasksInGroup];
 		tempTasksInGroup.splice(draggedTaskIndex, 1);
 		tempTasksInGroup.splice(targetIndex, 0, draggedTask);
-		setTasksInGroup(tempTasksInGroup);
+		// setTasksInGroup(tempTasksInGroup);
 	};
 
 	const handleDragLeave = (e) => {
