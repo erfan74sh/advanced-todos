@@ -86,6 +86,42 @@ const TasksProvider = ({ children }) => {
 		});
 	};
 
+	const reOrderTasks = (draggedId, targetId, position, editedTask) => {
+		const draggedTask = editedTask
+			? editedTask
+			: state.tasks.filter((task) => task.id === draggedId)[0];
+		const draggedTaskIndex = state.tasks.findIndex(
+			(task) => task.id === draggedId
+		);
+		const targetIndex = state.tasks.findIndex((task) => task.id === targetId);
+
+		let tempTasks = [...state.tasks];
+		if (editedTask) {
+			tempTasks[draggedTaskIndex] = editedTask;
+		}
+		tempTasks.splice(draggedTaskIndex, 1);
+		console.log(tempTasks);
+		if (position > 0) {
+			tempTasks.splice(
+				draggedTaskIndex >= targetIndex ? targetIndex + 1 : targetIndex,
+				0,
+				draggedTask
+			);
+		} else {
+			tempTasks.splice(
+				draggedTaskIndex >= targetIndex ? targetIndex : targetIndex - 1,
+				0,
+				draggedTask
+			);
+		}
+		dispatch({
+			type: "REORDER_TASKS",
+			payload: {
+				tasks: tempTasks,
+			},
+		});
+	};
+
 	const value = {
 		tasks: state.tasks,
 		tags: state.tags,
@@ -95,6 +131,7 @@ const TasksProvider = ({ children }) => {
 		duplicateTask,
 		addTagToTask,
 		addTag,
+		reOrderTasks,
 	};
 
 	return (
