@@ -40,6 +40,7 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 		} else {
 			reOrderTasks(draggedRef.current, draggedTargetRef.current, dragPosition);
 		}
+		setIndicatorPos(6);
 	};
 
 	const handleDragOver = (e) => {
@@ -82,6 +83,7 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 		e.preventDefault();
 		setIsDraggingOver(false);
 		setShowDragIndicator(false);
+		setIndicatorPos(6);
 	};
 
 	const handleDragStart = (e, cardId) => {
