@@ -49,7 +49,7 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 		setShowDragIndicator(true);
 	};
 
-	const handleDragEnter = (e, id) => {
+	const handleDragOverCard = (e, id) => {
 		e.preventDefault();
 		draggedTargetRef.current = id;
 		if (draggedRef.current !== id) {
@@ -123,7 +123,7 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 							handleDragStart={(e) => {
 								handleDragStart(e, task.id);
 							}}
-							handleDragEnter={(e) => handleDragEnter(e, task.id)}
+							DragOver={(e) => handleDragOverCard(e, task.id)}
 						/>
 					);
 				})}
