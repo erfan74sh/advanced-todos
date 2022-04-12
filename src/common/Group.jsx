@@ -1,29 +1,45 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 // components
 import TodoCard from "./TodoCard";
 import NewTodo from "./NewTodo";
 import { useTasksContext } from "../providers/TasksProvider";
 
-const Group = ({ groupName, draggedRef, tasksInGroup }) => {
-	const { tasks, editTask } = useTasksContext();
+const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
+	const { tasks, reOrderTasks } = useTasksContext();
 
-	let draggedTargetRef = useRef();
+	const [tasksInGroup, setTasksInGroup] = useState([]);
+	useEffect(() => {
+		const filteredTasks = tasks.filter((task) => task.group === groupName);
+		setTasksInGroup(filteredTasks);
+	}, [tasks, groupName]);
 
 	const [isDraggingOver, setIsDraggingOver] = useState(false);
 
 	const [showDragIndicator, setShowDragIndicator] = useState(false);
 
+	const [indicatorPos, setIndicatorPos] = useState(6);
+
 	const handleDrop = (e) => {
 		e.preventDefault();
 		const cardId = Number(e.dataTransfer.getData("cardId"));
 		let tempTask = tasks.filter((task) => task.id === cardId)[0];
-		if (tempTask.group !== groupName) {
-			tempTask = { ...tempTask, group: groupName, tags: [...tempTask.tags] };
-			editTask(cardId, tempTask);
-		}
 		setIsDraggingOver(false);
 		setShowDragIndicator(false);
-		reOrderCardIndex(draggedTargetRef.current);
+		const { dragPosition } = getDragPosition(
+			draggedTargetRef.current,
+			e.clientY
+		);
+		if (tempTask.group !== groupName) {
+			tempTask = { ...tempTask, group: groupName, tags: [...tempTask.tags] };
+			reOrderTasks(
+				draggedRef.current,
+				draggedTargetRef.current,
+				dragPosition,
+				tempTask
+			);
+		} else {
+			reOrderTasks(draggedRef.current, draggedTargetRef.current, dragPosition);
+		}
 	};
 
 	const handleDragOver = (e) => {
@@ -33,16 +49,11 @@ const Group = ({ groupName, draggedRef, tasksInGroup }) => {
 		setShowDragIndicator(true);
 	};
 
-	const [indicatorPos, setIndicatorPos] = useState(0);
-
 	const handleDragEnter = (e, id) => {
 		e.preventDefault();
 		draggedTargetRef.current = id;
 		if (draggedRef.current !== id) {
 			const { dragPosition, dragTargetCard } = getDragPosition(id, e.clientY);
-			const dragIndicator = document
-				.getElementById(groupName)
-				.getElementsByClassName("drag-indicator")[0];
 			const targetCardElementBox = dragTargetCard.getBoundingClientRect();
 			const currentDropZone = document
 				.getElementById(groupName)
@@ -65,22 +76,6 @@ const Group = ({ groupName, draggedRef, tasksInGroup }) => {
 		const dragPosition =
 			y - (targetCardElementBox.top + targetCardElementBox.height / 2);
 		return { dragPosition, dragTargetCard };
-	};
-
-	const reOrderCardIndex = (draggedTargetId) => {
-		const draggedTask = tasks.filter(
-			(task) => task.id === draggedRef.current
-		)[0];
-		const draggedTaskIndex = tasksInGroup.findIndex(
-			(task) => task.id === draggedRef.current
-		);
-		const targetIndex = tasksInGroup.findIndex(
-			(task) => task.id === draggedTargetId
-		);
-		let tempTasksInGroup = [...tasksInGroup];
-		tempTasksInGroup.splice(draggedTaskIndex, 1);
-		tempTasksInGroup.splice(targetIndex, 0, draggedTask);
-		// setTasksInGroup(tempTasksInGroup);
 	};
 
 	const handleDragLeave = (e) => {
