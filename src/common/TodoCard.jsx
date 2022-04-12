@@ -10,7 +10,7 @@ const TodoCard = ({
 	id,
 	tags,
 	handleDragStart,
-	handleDragEnter,
+	DragOver,
 }) => {
 	const [showDropdown, setShowDropdown] = useState(false);
 
@@ -31,7 +31,7 @@ const TodoCard = ({
 			onClick={(e) => handleClickOnCard(e)}
 			draggable="true"
 			onDragStart={handleDragStart}
-			onDragEnter={handleDragEnter}
+			onDragOver={DragOver}
 			id={id}
 		>
 			<article className="flex flex-col gap-y-1">
@@ -54,7 +54,6 @@ const TodoCard = ({
 					</section>
 				)}
 			</article>
-			<span className="block w-full h-0.5 ring-1 ring-blue-100 bg-sky-400 absolute rounded-full transform -translate-y-1.5 left-0 top-0"></span>
 		</li>
 	);
 };
