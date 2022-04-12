@@ -40,6 +40,9 @@ const tasksReducer = (state, action) => {
 		case "ADD_TAG":
 			console.log("ADD_TAG");
 			return { ...state, tags: payload.tags };
+		case "REORDER_TASKS":
+			console.log("REORDER_TASKS");
+			return { ...state, tasks: payload.tasks };
 		default:
 			return state;
 	}
