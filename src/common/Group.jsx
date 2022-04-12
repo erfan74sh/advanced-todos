@@ -47,11 +47,11 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 		e.preventDefault();
 		e.dataTransfer.dropEffect = "move";
 		setIsDraggingOver(true);
-		setShowDragIndicator(true);
 	};
 
 	const handleDragOverCard = (e, id) => {
 		e.preventDefault();
+		setShowDragIndicator(true);
 		draggedTargetRef.current = id;
 		if (draggedRef.current !== id) {
 			const { dragPosition, dragTargetCard } = getDragPosition(id, e.clientY);
