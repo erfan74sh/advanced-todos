@@ -41,6 +41,8 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 			reOrderTasks(draggedRef.current, draggedTargetRef.current, dragPosition);
 		}
 		setIndicatorPos(6);
+		draggedRef = null;
+		draggedTargetRef = null;
 	};
 
 	const handleDragOver = (e) => {
