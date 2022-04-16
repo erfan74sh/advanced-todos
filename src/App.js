@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 // providers
 import TasksProvider from "./providers/TasksProvider";
+import SearchAndSortProvider from "./providers/SearchAndSortProvider";
 // components
 import Groups from "./components/Groups";
 // styles
@@ -13,9 +14,11 @@ function App() {
 		<TasksProvider>
 			<Outlet />
 			<div className="flex flex-col px-44">
-				<Nav />
-				<Header />
-				<Groups />
+				<SearchAndSortProvider>
+					<Nav />
+					<Header />
+					<Groups />
+				</SearchAndSortProvider>
 			</div>
 		</TasksProvider>
 	);
