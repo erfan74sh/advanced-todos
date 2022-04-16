@@ -1,9 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// context
+import { useSearchAndSortContext } from "../providers/SearchAndSortProvider";
 // icons
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Search = () => {
+	const { searchValue, updateSearchValue } = useSearchAndSortContext();
 	return (
 		<div className="flex rounded-md flex-grow max-w-md focus-within:ring-2 hover:bg-gray-50 transition-colors duration-300">
 			<label
@@ -19,6 +22,10 @@ const Search = () => {
 				placeholder="search"
 				className="bg-transparent outline-none w-full px-1 leading-none"
 				autoComplete="off"
+				value={searchValue}
+				onChange={(e) => {
+					updateSearchValue(e.target.value);
+				}}
 			/>
 		</div>
 	);
