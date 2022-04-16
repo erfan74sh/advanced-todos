@@ -1,5 +1,4 @@
-import React, { createContext } from "react";
-import { useContext, useReducer } from "react/cjs/react.production.min";
+import React, { createContext, useContext, useReducer } from "react";
 import searchAndSortReducer, {
 	initialState,
 } from "../reducers/searchAndSortReducer";
