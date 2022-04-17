@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// context
+import { useSearchAndSortContext } from "../providers/SearchAndSortProvider";
 // icons
 import {
 	faArrowDownShortWide,
@@ -10,11 +12,14 @@ import {
 const Sort = () => {
 	const [showDropdown, setShowDropdown] = useState(false);
 
+	const { updateSortValue } = useSearchAndSortContext();
+
 	const [sortBy, setSortBy] = useState("");
 
 	const handleChange = (e) => {
 		setSortBy(e.target.value);
 		setShowDropdown(false);
+		updateSortValue(e.target.value);
 	};
 
 	const [sortOrder, setSortOrder] = useState("descending");
@@ -106,21 +111,6 @@ const Sort = () => {
 								type="radio"
 								name="sortBy"
 								value="date"
-								className="hidden"
-							/>
-						</label>
-					</li>
-					<li>
-						<label
-							className={`block cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded ${
-								sortBy === "priority" && "text-sky-900"
-							}`}
-						>
-							<span>Priority</span>
-							<input
-								type="radio"
-								name="sortBy"
-								value="priority"
 								className="hidden"
 							/>
 						</label>
