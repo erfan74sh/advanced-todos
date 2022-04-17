@@ -12,10 +12,15 @@ const SearchAndSortProvider = ({ children }) => {
 		dispatch({ type: "UPDATE_SEARCH_VALUE", payload: { searchValue: value } });
 	};
 
+	const updateSortValue = (value) => {
+		dispatch({ type: "UPDATE_SORT_VALUE", payload: { sortValue: value } });
+	};
+
 	const value = {
 		searchValue: state.searchValue,
 		sortValue: state.searchValue,
 		updateSearchValue,
+		updateSortValue,
 	};
 	return (
 		<searchAndSortContext.Provider value={value}>
