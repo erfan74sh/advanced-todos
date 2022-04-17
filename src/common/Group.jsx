@@ -27,6 +27,15 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 				return 0;
 			});
 		}
+		if (sortBy.value === "date") {
+			filteredTasks.sort((a, b) => {
+				const firstTitle = a.id;
+				const secondTitle = b.id;
+				return sortBy.order === "ascending"
+					? firstTitle - secondTitle
+					: secondTitle - firstTitle;
+			});
+		}
 
 		setTasksInGroup(filteredTasks);
 	}, [tasks, groupName, sortBy.value, sortBy.order]);
