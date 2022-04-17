@@ -8,7 +8,7 @@ const Groups = () => {
 	const draggedTargetRef = useRef();
 
 	return (
-		<div className="flex gap-x-10 ">
+		<div className="flex justify-between">
 			<Group
 				groupName="todo"
 				draggedRef={draggedRef}
