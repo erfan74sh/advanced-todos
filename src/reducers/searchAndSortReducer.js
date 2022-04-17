@@ -1,6 +1,9 @@
 export const initialState = {
 	searchValue: "",
-	sortValue: "",
+	sortBy: {
+		value: "",
+		order: "",
+	},
 };
 
 const searchAndSortReducer = (state, action) => {
@@ -11,7 +14,10 @@ const searchAndSortReducer = (state, action) => {
 			return { ...state, searchValue: payload.searchValue };
 		case "UPDATE_SORT_VALUE":
 			console.log("UPDATE_SORT_VALUE");
-			return { ...state, sortValue: payload.sortValue };
+			return {
+				...state,
+				sortBy: { ...state.sortBy, [payload.sortByKey]: payload.sortByValue },
+			};
 		default:
 			return state;
 	}
