@@ -12,8 +12,11 @@ const SearchAndSortProvider = ({ children }) => {
 		dispatch({ type: "UPDATE_SEARCH_VALUE", payload: { searchValue: value } });
 	};
 
-	const updateSortValue = (value) => {
-		dispatch({ type: "UPDATE_SORT_VALUE", payload: { sortValue: value } });
+	const updateSortValue = (key, value) => {
+		dispatch({
+			type: "UPDATE_SORT_VALUE",
+			payload: { sortByKey: key, sortByValue: value },
+		});
 	};
 
 	const value = {
