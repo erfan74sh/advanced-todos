@@ -1,5 +1,7 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+// context
+import { useSearchAndSortContext } from "../providers/SearchAndSortProvider";
 // components
 import MoreOptions from "./MoreOptions";
 import Tags from "./Tags";
@@ -17,6 +19,15 @@ const TodoCard = ({
 	const dropDownRef = useRef(null);
 
 	const navigate = useNavigate();
+
+	const { searchValue } = useSearchAndSortContext();
+
+	const [parts, setParts] = useState([]);
+	useEffect(() => {
+		if (searchValue.length >= 2) {
+			setParts(title.split(new RegExp(`(${searchValue})`, "gi")));
+		}
+	}, [searchValue, title]);
 
 	const handleClickOnCard = (e) => {
 		if (dropDownRef && !dropDownRef.current.contains(e.target)) {
@@ -37,7 +48,19 @@ const TodoCard = ({
 			<article className="flex flex-col gap-y-1">
 				<header>
 					<h3 className="font-medium flex justify-between gap-x-0.5 relative">
-						<span className="pr-6">{title}</span>
+						<span className="pr-6">
+							{searchValue.length >= 2 ? (
+								parts.map((part, idx) => {
+									if (part.toLowerCase() === searchValue.toLowerCase()) {
+										return <mark key={idx}>{part}</mark>;
+									} else {
+										return <span key={idx}>{part}</span>;
+									}
+								})
+							) : (
+								<>{title}</>
+							)}
+						</span>
 						<div className="absolute right-0" ref={dropDownRef}>
 							<MoreOptions
 								showDropdown={showDropdown}
