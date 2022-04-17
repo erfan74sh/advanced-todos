@@ -21,7 +21,7 @@ const SearchAndSortProvider = ({ children }) => {
 
 	const value = {
 		searchValue: state.searchValue,
-		sortValue: state.searchValue,
+		sortBy: state.sortBy,
 		updateSearchValue,
 		updateSortValue,
 	};
