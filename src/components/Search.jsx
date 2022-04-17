@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // context
 import { useSearchAndSortContext } from "../providers/SearchAndSortProvider";
 // icons
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Search = () => {
 	const { searchValue, updateSearchValue } = useSearchAndSortContext();
@@ -27,6 +27,14 @@ const Search = () => {
 					updateSearchValue(e.target.value);
 				}}
 			/>
+			{searchValue && (
+				<button
+					className="flex items-center justify-center text-2xl text-sky-900 w-9 h-9 mr-1.5 cursor-pointer opacity-50 transition-opacity hover:opacity-100"
+					onClick={() => updateSearchValue("")}
+				>
+					<FontAwesomeIcon icon={faXmark} />
+				</button>
+			)}
 		</div>
 	);
 };
