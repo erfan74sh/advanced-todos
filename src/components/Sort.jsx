@@ -19,13 +19,14 @@ const Sort = () => {
 	const handleChange = (e) => {
 		setSortBy(e.target.value);
 		setShowDropdown(false);
-		updateSortValue(e.target.value);
+		updateSortValue("value", e.target.value);
 	};
 
 	const [sortOrder, setSortOrder] = useState("descending");
 
 	const handleOrderChange = (e) => {
 		setSortOrder(e.target.value);
+		updateSortValue("order", e.target.value);
 	};
 
 	return (
