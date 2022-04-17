@@ -9,6 +9,9 @@ const searchAndSortReducer = (state, action) => {
 		case "UPDATE_SEARCH_VALUE":
 			console.log("UPDATE_SEARCH_VALUE");
 			return { ...state, searchValue: payload.searchValue };
+		case "UPDATE_SORT_VALUE":
+			console.log("UPDATE_SORT_VALUE");
+			return { ...state, sortValue: payload.sortValue };
 		default:
 			return state;
 	}
