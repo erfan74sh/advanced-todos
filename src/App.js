@@ -13,7 +13,7 @@ function App() {
 	return (
 		<TasksProvider>
 			<Outlet />
-			<div className="flex flex-col px-44">
+			<div className="flex flex-col px-52">
 				<SearchAndSortProvider>
 					<Nav />
 					<Header />
