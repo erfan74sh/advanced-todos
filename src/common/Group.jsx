@@ -1,17 +1,35 @@
 import React, { useEffect, useState } from "react";
+// context
+import { useTasksContext } from "../providers/TasksProvider";
+import { useSearchAndSortContext } from "../providers/SearchAndSortProvider";
 // components
 import TodoCard from "./TodoCard";
 import NewTodo from "./NewTodo";
-import { useTasksContext } from "../providers/TasksProvider";
 
 const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 	const { tasks, reOrderTasks } = useTasksContext();
 
+	const { sortBy } = useSearchAndSortContext();
+
 	const [tasksInGroup, setTasksInGroup] = useState([]);
 	useEffect(() => {
 		const filteredTasks = tasks.filter((task) => task.group === groupName);
+		if (sortBy.value === "name") {
+			filteredTasks.sort((a, b) => {
+				const firstTitle = a.title.toLowerCase();
+				const secondTitle = b.title.toLowerCase();
+				if (firstTitle < secondTitle) {
+					return sortBy.order === "ascending" ? -1 : 1;
+				}
+				if (firstTitle > secondTitle) {
+					return sortBy.order === "ascending" ? 1 : -1;
+				}
+				return 0;
+			});
+		}
+
 		setTasksInGroup(filteredTasks);
-	}, [tasks, groupName]);
+	}, [tasks, groupName, sortBy.value, sortBy.order]);
 
 	const [isDraggingOver, setIsDraggingOver] = useState(false);
 
