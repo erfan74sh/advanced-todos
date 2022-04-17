@@ -14,8 +14,8 @@ import {
 
 const Profile = () => {
 	return (
-		<div className="flex items-center gap-x-3 text-sky-900">
-			<ul className="flex items-center gap-x-2 text-2xl">
+		<div className="w-full sm:w-auto flex items-center gap-x-3 text-sky-900">
+			<ul className="flex items-center gap-x-2 text-2xl mr-auto">
 				<li className="ring-2 rounded-md w-9 h-9 flex items-center justify-center">
 					<Link to="" className="w-full h-full">
 						<FontAwesomeIcon icon={faGithubSquare} className="w-full h-full" />
