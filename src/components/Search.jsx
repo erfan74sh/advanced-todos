@@ -19,7 +19,7 @@ const Search = () => {
 				type="text"
 				id="search"
 				name="search"
-				placeholder="search"
+				placeholder="Search through Titles"
 				className="bg-transparent outline-none w-full px-1 leading-none"
 				autoComplete="off"
 				value={searchValue}
