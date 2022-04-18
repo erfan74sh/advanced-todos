@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // context
 import { useSearchAndSortContext } from "../providers/SearchAndSortProvider";
+// hooks
+import useOnClickOutside from "../hooks/useOnClickOutside";
 // icons
 import {
 	faArrowDown19,
@@ -13,6 +15,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sort = () => {
+	const dropDownRef = useRef(null);
+
 	const [showDropdown, setShowDropdown] = useState(false);
 
 	const { updateSortValue } = useSearchAndSortContext();
@@ -32,8 +36,13 @@ const Sort = () => {
 		updateSortValue("order", e.target.value);
 	};
 
+	useOnClickOutside(dropDownRef, () => setShowDropdown(false));
+
 	return (
-		<div className="relative flex gap-x-3 text-zinc-600 self-end">
+		<div
+			className="relative flex gap-x-3 text-zinc-600 self-end"
+			ref={dropDownRef}
+		>
 			{sortBy !== "" && (
 				<div className="flex gap-x-1" onChange={(e) => handleOrderChange(e)}>
 					<label
