@@ -5,6 +5,8 @@ import { useSearchAndSortContext } from "../providers/SearchAndSortProvider";
 // components
 import MoreOptions from "./MoreOptions";
 import Tags from "./Tags";
+// hooks
+import useOnClickOutside from "../hooks/useOnClickOutside";
 
 const TodoCard = ({
 	title,
@@ -35,6 +37,8 @@ const TodoCard = ({
 		}
 		return;
 	};
+
+	useOnClickOutside(dropDownRef, () => setShowDropdown(false));
 
 	return (
 		<li
