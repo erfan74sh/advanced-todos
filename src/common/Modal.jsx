@@ -2,16 +2,18 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // components
-import MoreOptions from "./MoreOptions";
 import AddTags from "./AddTags";
 import MoveToGroup from "./MoveToGroup";
-import Tags from "./Tags";
 // hooks
 import useOnClickOutside from "../hooks/useOnClickOutside";
 // context
 import { useTasksContext } from "../providers/TasksProvider";
 // icons
-import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import {
+	faChevronDown,
+	faChevronUp,
+	faXmark,
+} from "@fortawesome/free-solid-svg-icons";
 
 const Modal = () => {
 	const { tasks, editTask } = useTasksContext();
@@ -151,7 +153,12 @@ const Modal = () => {
 								<FontAwesomeIcon icon={faChevronDown} />
 							</button>
 						</div>
-						<MoreOptions />
+						<button
+							className="text-zinc-400 hover:text-zinc-600 cursor-pointer transition-colors text-lg"
+							onClick={onClickOutside}
+						>
+							<FontAwesomeIcon icon={faXmark} size="1x" />
+						</button>
 					</nav>
 					<article className="flex flex-col gap-y-4 mt-6 sm:px-10 py-5">
 						<header>
