@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // context
 import { useTasksContext } from "../providers/TasksProvider";
@@ -10,6 +10,7 @@ import {
 	faEllipsisVertical,
 	faPlus,
 } from "@fortawesome/free-solid-svg-icons";
+import useOnClickOutside from "../hooks/useOnClickOutside";
 
 const bgColors = [
 	"#e5e5e5",
@@ -41,6 +42,8 @@ const ColorDropdown = () => {
 };
 
 const AddTags = ({ handleCheckedTags, checkedTags }) => {
+	const addTagsRef = useRef(null);
+
 	const { tags, addTag } = useTasksContext();
 
 	const [newTagName, setNewTagName] = useState("");
@@ -53,8 +56,11 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 	const handleShowDropdown = () => {
 		setShowDropdown(!showDropdown);
 	};
+
+	useOnClickOutside(addTagsRef, () => setShowDropdown(false));
+
 	return (
-		<>
+		<div ref={addTagsRef}>
 			<div
 				className={`flex justify-between items-center rounded px-2 py-1 hover:bg-slate-50 cursor-pointer transition-all ${
 					showDropdown && "shadow-md rounded-b-none"
@@ -130,7 +136,7 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 					})}
 				</form>
 			)}
-		</>
+		</div>
 	);
 };
 

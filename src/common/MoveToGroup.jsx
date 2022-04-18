@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // iconst
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import useOnClickOutside from "../hooks/useOnClickOutside";
 
 const MoveToGroup = ({ handleTaskChange, taskGroup }) => {
+	const moveToGroupRef = useRef(null);
+
 	const [showDropdown, setShowDropdown] = useState(false);
 	const handleShowDropdown = () => {
 		setShowDropdown(!showDropdown);
@@ -14,8 +17,10 @@ const MoveToGroup = ({ handleTaskChange, taskGroup }) => {
 		handleShowDropdown();
 	};
 
+	useOnClickOutside(moveToGroupRef, () => setShowDropdown(false));
+
 	return (
-		<>
+		<div ref={moveToGroupRef}>
 			<div
 				className={`flex justify-between rounded px-2 py-1 hover:bg-slate-50 cursor-pointer transition-all ${
 					showDropdown && "shadow-md rounded-b-none"
@@ -51,7 +56,7 @@ const MoveToGroup = ({ handleTaskChange, taskGroup }) => {
 					</label>
 				</form>
 			)}
-		</>
+		</div>
 	);
 };
 
