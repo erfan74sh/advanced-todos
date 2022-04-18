@@ -172,30 +172,31 @@ const Modal = () => {
 									<span className="w-1/2 sm:w-1/3 lg:w-1/4 px-2 py-1 text-zinc-600">
 										created date:
 									</span>
-									<span className="w-1/2 sm:w-1/3 lg:w-1/4">
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4 pl-2">
 										{taskToEdit.createdDate}
 									</span>
 								</li>
 								<li className="flex gap-x-4 relative">
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4 px-2 py-1 text-zinc-600">
+										status:
+									</span>
 									<div className="w-1/2 sm:w-1/3 lg:w-1/4 relative">
 										<MoveToGroup
 											taskId={taskToEdit.id}
+											taskGroup={taskToEdit.group}
 											handleTaskChange={handleTaskChange}
 										/>
 									</div>
-									<span className="w-1/2 sm:w-1/3 lg:w-1/4 flex items-center">
-										{taskToEdit.group}
-									</span>
 								</li>
 								<li className="flex gap-x-4">
+									<span className="w-1/2 sm:w-1/3 lg:w-1/4 px-2 py-1 text-zinc-600">
+										tags:
+									</span>
 									<div className="w-1/2 sm:w-1/3 lg:w-1/4 relative">
 										<AddTags
 											handleCheckedTags={handleCheckedTags}
 											checkedTags={checkedTags}
 										/>
-									</div>
-									<div className="w-1/2 sm:w-1/3 lg:w-1/4 flex items-center flex-grow">
-										<Tags tags={taskToEdit.tags} />
 									</div>
 								</li>
 							</ul>
