@@ -14,31 +14,31 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 	const [tasksInGroup, setTasksInGroup] = useState([]);
 	useEffect(() => {
 		const filteredTasks = tasks.filter((task) => task.group === groupName);
-		if (sortBy.value === "name") {
-			filteredTasks.sort((a, b) => {
-				const firstTitle = a.title.toLowerCase();
-				const secondTitle = b.title.toLowerCase();
-				if (firstTitle < secondTitle) {
-					return sortBy.order === "ascending" ? -1 : 1;
-				}
-				if (firstTitle > secondTitle) {
-					return sortBy.order === "ascending" ? 1 : -1;
-				}
-				return 0;
-			});
-		}
-		if (sortBy.value === "date") {
-			filteredTasks.sort((a, b) => {
-				const firstTitle = a.id;
-				const secondTitle = b.id;
-				return sortBy.order === "ascending"
-					? firstTitle - secondTitle
-					: secondTitle - firstTitle;
-			});
-		}
+		// if (sortBy.value === "name") {
+		// 	filteredTasks.sort((a, b) => {
+		// 		const firstTitle = a.title.toLowerCase();
+		// 		const secondTitle = b.title.toLowerCase();
+		// 		if (firstTitle < secondTitle) {
+		// 			return sortBy.order === "ascending" ? -1 : 1;
+		// 		}
+		// 		if (firstTitle > secondTitle) {
+		// 			return sortBy.order === "ascending" ? 1 : -1;
+		// 		}
+		// 		return 0;
+		// 	});
+		// }
+		// if (sortBy.value === "date") {
+		// 	filteredTasks.sort((a, b) => {
+		// 		const firstTitle = a.id;
+		// 		const secondTitle = b.id;
+		// 		return sortBy.order === "ascending"
+		// 			? firstTitle - secondTitle
+		// 			: secondTitle - firstTitle;
+		// 	});
+		// }
 
 		setTasksInGroup(filteredTasks);
-	}, [tasks, groupName, sortBy.value, sortBy.order]);
+	}, [tasks, groupName]);
 
 	const [isDraggingOver, setIsDraggingOver] = useState(false);
 
@@ -76,6 +76,7 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 		e.preventDefault();
 		e.dataTransfer.dropEffect = "move";
 		setIsDraggingOver(true);
+		console.log("drag over");
 	};
 
 	const handleDragOverCard = (e, id) => {
@@ -133,7 +134,7 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 			</header>
 			<NewTodo groupName={groupName} />
 			<ul
-				className={`flex flex-col gap-y-3 h-full droppable rounded-md transition-all relative ${
+				className={`flex flex-col gap-y-3 h-full flex-grow droppable rounded-md transition-all relative ${
 					isDraggingOver ? " bg-white bg-opacity-70" : "bg-transparent"
 				}`}
 				onDrop={handleDrop}
