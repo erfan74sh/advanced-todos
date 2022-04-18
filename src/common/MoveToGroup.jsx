@@ -17,13 +17,13 @@ const MoveToGroup = ({ handleTaskChange, taskGroup }) => {
 	return (
 		<>
 			<div
-				className={`flex justify-between rounded px-2 py-1 hover:shadow cursor-pointer transition-all ${
+				className={`flex justify-between rounded px-2 py-1 hover:bg-slate-50 cursor-pointer transition-all ${
 					showDropdown && "shadow-md rounded-b-none"
 				}`}
 				onClick={() => handleShowDropdown()}
 			>
 				<span>{taskGroup}</span>
-				<span>
+				<span className="text-zinc-600">
 					<FontAwesomeIcon icon={faCaretDown} />
 				</span>
 			</div>

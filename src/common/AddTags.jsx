@@ -56,7 +56,7 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 	return (
 		<>
 			<div
-				className={`flex justify-between items-center rounded px-2 py-1 hover:shadow cursor-pointer transition-all ${
+				className={`flex justify-between items-center rounded px-2 py-1 hover:bg-slate-50 cursor-pointer transition-all ${
 					showDropdown && "shadow-md rounded-b-none"
 				}`}
 				onClick={() => handleShowDropdown()}
@@ -66,7 +66,7 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 				) : (
 					<span>select tag</span>
 				)}
-				<span>
+				<span className="text-zinc-600">
 					<FontAwesomeIcon icon={faCaretDown} />
 				</span>
 			</div>
