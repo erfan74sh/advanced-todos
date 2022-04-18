@@ -14,31 +14,31 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 	const [tasksInGroup, setTasksInGroup] = useState([]);
 	useEffect(() => {
 		const filteredTasks = tasks.filter((task) => task.group === groupName);
-		// if (sortBy.value === "name") {
-		// 	filteredTasks.sort((a, b) => {
-		// 		const firstTitle = a.title.toLowerCase();
-		// 		const secondTitle = b.title.toLowerCase();
-		// 		if (firstTitle < secondTitle) {
-		// 			return sortBy.order === "ascending" ? -1 : 1;
-		// 		}
-		// 		if (firstTitle > secondTitle) {
-		// 			return sortBy.order === "ascending" ? 1 : -1;
-		// 		}
-		// 		return 0;
-		// 	});
-		// }
-		// if (sortBy.value === "date") {
-		// 	filteredTasks.sort((a, b) => {
-		// 		const firstTitle = a.id;
-		// 		const secondTitle = b.id;
-		// 		return sortBy.order === "ascending"
-		// 			? firstTitle - secondTitle
-		// 			: secondTitle - firstTitle;
-		// 	});
-		// }
+		if (sortBy.value === "name") {
+			filteredTasks.sort((a, b) => {
+				const firstTitle = a.title.toLowerCase();
+				const secondTitle = b.title.toLowerCase();
+				if (firstTitle < secondTitle) {
+					return sortBy.order === "ascending" ? -1 : 1;
+				}
+				if (firstTitle > secondTitle) {
+					return sortBy.order === "ascending" ? 1 : -1;
+				}
+				return 0;
+			});
+		}
+		if (sortBy.value === "date") {
+			filteredTasks.sort((a, b) => {
+				const firstTitle = a.id;
+				const secondTitle = b.id;
+				return sortBy.order === "ascending"
+					? firstTitle - secondTitle
+					: secondTitle - firstTitle;
+			});
+		}
 
 		setTasksInGroup(filteredTasks);
-	}, [tasks, groupName]);
+	}, [tasks, groupName, sortBy.value, sortBy.order]);
 
 	const [isDraggingOver, setIsDraggingOver] = useState(false);
 
