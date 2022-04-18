@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // iconst
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const MoveToGroup = ({ handleTaskChange }) => {
+const MoveToGroup = ({ handleTaskChange, taskGroup }) => {
 	const [showDropdown, setShowDropdown] = useState(false);
 	const handleShowDropdown = () => {
 		setShowDropdown(!showDropdown);
@@ -17,12 +17,12 @@ const MoveToGroup = ({ handleTaskChange }) => {
 	return (
 		<>
 			<div
-				className={`flex justify-between rounded px-2 py-1 hover:shadow cursor-pointer text-zinc-600 transition-all ${
+				className={`flex justify-between rounded px-2 py-1 hover:shadow cursor-pointer transition-all ${
 					showDropdown && "shadow-md rounded-b-none"
 				}`}
 				onClick={() => handleShowDropdown()}
 			>
-				<span>status</span>
+				<span>{taskGroup}</span>
 				<span>
 					<FontAwesomeIcon icon={faCaretDown} />
 				</span>
