@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // context
 import { useTasksContext } from "../providers/TasksProvider";
+// components
+import Tags from "./Tags";
 // icons
 import {
 	faCaretDown,
-	// faCheck,
 	faEllipsisVertical,
 	faPlus,
 } from "@fortawesome/free-solid-svg-icons";
@@ -55,12 +56,16 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 	return (
 		<>
 			<div
-				className={`flex justify-between rounded px-2 py-1 hover:shadow cursor-pointer text-zinc-600 transition-all ${
+				className={`flex justify-between items-center rounded px-2 py-1 hover:shadow cursor-pointer transition-all ${
 					showDropdown && "shadow-md rounded-b-none"
 				}`}
 				onClick={() => handleShowDropdown()}
 			>
-				<span>Tags</span>
+				{checkedTags.length ? (
+					<Tags tags={checkedTags} />
+				) : (
+					<span>select tag</span>
+				)}
 				<span>
 					<FontAwesomeIcon icon={faCaretDown} />
 				</span>
