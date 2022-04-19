@@ -5,11 +5,7 @@ import { useTasksContext } from "../providers/TasksProvider";
 // components
 import Tags from "./Tags";
 // icons
-import {
-	faCaretDown,
-	faEllipsisVertical,
-	faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faPlus } from "@fortawesome/free-solid-svg-icons";
 import useOnClickOutside from "../hooks/useOnClickOutside";
 
 const bgColors = [
@@ -24,22 +20,6 @@ const bgColors = [
 	"#e9d5ff",
 	"#fbcfe8",
 ];
-
-const ColorDropdown = () => {
-	return (
-		<ul className="flex flex-col gap-y-1 p-1 rounded-md absolute top-0 z-50">
-			{bgColors.map((color, idx) => {
-				return (
-					<li
-						key={idx}
-						className="w-20 h-5 rounded"
-						style={{ backgroundColor: color }}
-					></li>
-				);
-			})}
-		</ul>
-	);
-};
 
 const AddTags = ({ handleCheckedTags, checkedTags }) => {
 	const addTagsRef = useRef(null);
@@ -77,7 +57,7 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 				</span>
 			</div>
 			{showDropdown && (
-				<form className="absolute left-0 w-full max-h-40 overflow-y-scroll bg-white rounded-b shadow-md p-2.5 flex flex-col top-full border-t-2 z-20">
+				<form className="absolute left-0 w-full max-h-40 overflow-y-scroll overflow-x-visible bg-white rounded-b shadow-md p-2.5 flex flex-col top-full border-t-2 z-20">
 					<label className="flex px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 focus-within:ring-2 mb-1">
 						<input
 							type="text"
@@ -113,11 +93,6 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 									className="hidden"
 									onChange={(e) => handleCheckedTags(e)}
 								/>
-								{/* {checkedTags.includes(tag.tagName) && (
-									<span className="mr-1">
-										<FontAwesomeIcon icon={faCheck} className="text-sm" />
-									</span>
-								)} */}
 								<span
 									className="px-1 rounded"
 									style={{
@@ -127,10 +102,6 @@ const AddTags = ({ handleCheckedTags, checkedTags }) => {
 								>
 									{tag.tagName}
 								</span>
-								<div className="relative group-hover:opacity-100 hover:bg-gray-400 opacity-0 transition-all rounded-sm px-1 ml-auto">
-									<FontAwesomeIcon icon={faEllipsisVertical} />
-									<ColorDropdown />
-								</div>
 							</label>
 						);
 					})}
