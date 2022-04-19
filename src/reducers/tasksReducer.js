@@ -7,7 +7,8 @@ export const initialState = {
 	tasks: [
 		{
 			title: "sample task title...",
-			description: "sample task description...",
+			description:
+				"try moving this card to another group or change it's order by dragging...",
 			group: "todo",
 			id: 1,
 			createdDate: new Date().toLocaleString(),
