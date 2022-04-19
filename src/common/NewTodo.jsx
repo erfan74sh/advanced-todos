@@ -5,6 +5,7 @@ import { useTasksContext } from "../providers/TasksProvider";
 // icons
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import useOnClickOutside from "../hooks/useOnClickOutside";
 
 const NewTodo = ({ groupName }) => {
 	const navigate = useNavigate();
@@ -44,8 +45,12 @@ const NewTodo = ({ groupName }) => {
 
 	const inputRef = useRef(null);
 
+	const newTodoRef = useRef(null);
+
+	useOnClickOutside(newTodoRef, () => setExpand(true));
+
 	return (
-		<div className="flex">
+		<div className="flex" ref={newTodoRef}>
 			<div
 				className={`${expand ? "w-0" : ""} h-9 transition-transform flex-grow`}
 			>
