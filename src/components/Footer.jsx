@@ -16,8 +16,7 @@ const Footer = () => {
 					buy me a coffee
 					<FontAwesomeIcon
 						icon={faMugHot}
-						beat
-						className="text-yellow-600 text-xl mx-2"
+						className="text-orange-500 text-xl mx-2 fa-bounce"
 					/>
 				</a>
 				to support me ❤️
