@@ -15,7 +15,7 @@ const Profile = () => {
 	return (
 		<div className="w-full sm:w-auto flex items-center gap-x-3 text-sky-900">
 			<ul className="flex items-center gap-x-2 text-2xl mr-auto">
-				<li className="ring-2 rounded-md w-9 h-9 flex items-center justify-center">
+				<li className="ring-2 rounded-md w-8 h-8 flex items-center justify-center">
 					<a
 						href="https://github.com/erfan74sh"
 						target="_blank"
@@ -25,7 +25,7 @@ const Profile = () => {
 						<FontAwesomeIcon icon={faGithubSquare} className="w-full h-full" />
 					</a>
 				</li>
-				<li className="ring-2 rounded-md w-9 h-9 flex items-center justify-center">
+				<li className="ring-2 rounded-md w-8 h-8 flex items-center justify-center">
 					<a
 						href="https://www.instagram.com/erfanshafiee/"
 						target="_blank"
@@ -38,7 +38,7 @@ const Profile = () => {
 						/>
 					</a>
 				</li>
-				<li className="ring-2 rounded-md w-9 h-9 flex items-center justify-center">
+				<li className="ring-2 rounded-md w-8 h-8 flex items-center justify-center">
 					<a
 						href="https://www.linkedin.com/in/erfan-shafiee/"
 						target="_blank"
@@ -48,7 +48,7 @@ const Profile = () => {
 						<FontAwesomeIcon icon={faLinkedin} className="w-full h-full" />
 					</a>
 				</li>
-				<li className="ring-2 rounded-md w-9 h-9 flex items-center justify-center">
+				<li className="ring-2 rounded-md w-8 h-8 flex items-center justify-center">
 					<a
 						href="https://twitter.com/erfan95sh"
 						target="_blank"
@@ -58,7 +58,7 @@ const Profile = () => {
 						<FontAwesomeIcon icon={faTwitterSquare} className="w-full h-full" />
 					</a>
 				</li>
-				<li className="ring-2 rounded-md w-9 h-9 flex items-center justify-center">
+				<li className="ring-2 rounded-md w-8 h-8 flex items-center justify-center">
 					<a
 						href="mailto:erfanshafiee.dev@gmail.com"
 						target="_blank"
@@ -77,7 +77,7 @@ const Profile = () => {
 				<img
 					src={ProfilPic}
 					alt="erfan shafiee"
-					className="w-9 h-9 rounded-md"
+					className="w-8 h-8 rounded-md"
 				/>
 			</div>
 		</div>
