@@ -26,7 +26,7 @@ const TodoCard = ({
 
 	const [parts, setParts] = useState([]);
 	useEffect(() => {
-		if (searchValue.length >= 2) {
+		if (searchValue.length > 0) {
 			setParts(title.split(new RegExp(`(${searchValue})`, "gi")));
 		}
 	}, [searchValue, title]);
@@ -53,7 +53,7 @@ const TodoCard = ({
 				<header>
 					<h3 className="font-medium flex justify-between gap-x-0.5 relative">
 						<span className="pr-6">
-							{searchValue.length >= 2 ? (
+							{searchValue.length > 0 ? (
 								parts.map((part, idx) => {
 									if (part.toLowerCase() === searchValue.toLowerCase()) {
 										return <mark key={idx}>{part}</mark>;
