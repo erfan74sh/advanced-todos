@@ -11,8 +11,14 @@ import {
 	faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
-const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
+const MoreOptions = ({
+	handleDropdown,
+	showDropdown,
+	taskId,
+	dropDownLeftPos,
+}) => {
 	const navigate = useNavigate();
+
 	const { removeTask, duplicateTask } = useTasksContext();
 
 	const handleRemoveTask = () => {
@@ -42,6 +48,7 @@ const MoreOptions = ({ handleDropdown, showDropdown, taskId }) => {
 				className={`${
 					showDropdown ? "block" : "hidden"
 				} bg-white absolute z-10 top-full transform translate-y-1 p-2.5 rounded shadow-md w-40`}
+				style={{ left: dropDownLeftPos < 0 ? dropDownLeftPos : 0 }}
 			>
 				<li
 					className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
