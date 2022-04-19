@@ -38,6 +38,15 @@ const TodoCard = ({
 		return;
 	};
 
+	const moreOptionsDropdownBox = dropDownRef.current?.getBoundingClientRect();
+	const htmlWidth = document.getElementById("root").clientWidth;
+	const [dropDownLeftPos, setDropDownLeftPos] = useState(0);
+	useEffect(() => {
+		const dropdownBoxOffset = htmlWidth - moreOptionsDropdownBox?.left;
+		const pos = dropdownBoxOffset - 165;
+		setDropDownLeftPos(pos);
+	}, [moreOptionsDropdownBox, htmlWidth]);
+
 	useOnClickOutside(dropDownRef, () => setShowDropdown(false));
 
 	return (
@@ -70,6 +79,7 @@ const TodoCard = ({
 								showDropdown={showDropdown}
 								handleDropdown={() => setShowDropdown(!showDropdown)}
 								taskId={id}
+								dropDownLeftPos={dropDownLeftPos}
 							/>
 						</div>
 					</h3>
