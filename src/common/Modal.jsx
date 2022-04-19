@@ -20,6 +20,7 @@ const Modal = () => {
 	const { taskId } = useParams();
 	const navigate = useNavigate();
 	const modalBgRef = useRef(null);
+	const moreDescriptionRef = useRef(null);
 
 	const [taskToEdit, setTaskToEdit] = useState({
 		title: "",
@@ -30,6 +31,9 @@ const Modal = () => {
 	useEffect(() => {
 		const thisTask = tasks.filter((task) => task.id === parseInt(taskId))?.[0];
 		thisTask && setTaskToEdit({ ...thisTask });
+		if (thisTask.description === "") {
+			moreDescriptionRef.current.focus();
+		}
 		console.log(thisTask);
 	}, [tasks, taskId]);
 
@@ -213,6 +217,7 @@ const Modal = () => {
 								value={taskToEdit.description}
 								placeholder="more description..."
 								name="description"
+								ref={moreDescriptionRef}
 								rows={4}
 								className="outline-none w-full bg-transparent hover:bg-slate-50 px-1.5 py-1 rounded-md focus:ring-2 overflow-hidden resize-none"
 								onChange={(e) => handleTaskChange(e)}
