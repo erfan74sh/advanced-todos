@@ -81,8 +81,10 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 
 	const handleDragOverCard = (e, id) => {
 		e.preventDefault();
-		setShowDragIndicator(true);
 		draggedTargetRef.current = id;
+		if (id !== draggedRef.current) {
+			setShowDragIndicator(true);
+		}
 		if (draggedRef.current !== id) {
 			const { dragPosition, dragTargetCard } = getDragPosition(id, e.clientY);
 			const targetCardElementBox = dragTargetCard.getBoundingClientRect();
