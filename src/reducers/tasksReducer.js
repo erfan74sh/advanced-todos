@@ -1,8 +1,8 @@
 export const initialState = {
 	tags: [
-		{ tagName: "Q1", color: "#fecaca" },
-		{ tagName: "Q2", color: "#fef08a" },
-		{ tagName: "Q3", color: "#d9f99d" },
+		{ tagName: "Q1", color: "#e5e5e5" },
+		{ tagName: "Q2", color: "#a3a3a3" },
+		{ tagName: "Q3", color: "#fecaca" },
 	],
 	tasks: [
 		{
