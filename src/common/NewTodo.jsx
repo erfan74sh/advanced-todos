@@ -56,7 +56,7 @@ const NewTodo = ({ groupName }) => {
 			>
 				<input
 					type="text"
-					placeholder="Enter Todo..."
+					placeholder="Enter Task Title..."
 					value={newTodo}
 					ref={inputRef}
 					className="h-9 rounded-md px-2 outline-none focus:ring-2 overflow-hidden transition-all w-full mr-1"
