@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Advanced ToDo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a bit more advanced **[ToDo application](https://advanced-todos-eshafiee.vercel.app/)** than other typical mini-projects that I built for learning purposes.
 
-## Available Scripts
+These are a few of the features I implemented in this project:
 
-In the project directory, you can run:
+- _Drag and Drop_ cards to reorder or change cards group.
+- _Three groups of cards_ for each task status like "Todo", "Doing" and "Done" .
+- Assign some preset _tags_ to each card while creating your own _tags_.
+- _Search_ through titles of cards and highlighting searched characters.
+- _Sort_ cards based on Date and Name ascending or descending.
+- ...
 
-### `npm start`
+The most challenging part for me was "Drag and Drop" feature , which I tried to implement without using third-party libraries. I also implemented features such as closing Modals or Dropdown lists when clicked outside, in the meantime I learned more and deeper features of React such as `custom hooks`, `useReducers`, `useContext`, `useRef` and .... .
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<div  style="position: relative; padding-bottom: 56.25%; height: 0; width: 100%" align= "center"><iframe  src="https://www.loom.com/embed/4eb36fb4ba734fb898eff4f38cec04e5"  frameborder="0"  webkitallowfullscreen  mozallowfullscreen  allowfullscreen  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## instructions
 
-### `npm test`
+You will need `Node.js` (prefer v11+) and `nmp` or `Yarn` installed locally.
+Then u can run the app in the development mode.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+yarn start
+```
 
-### `npm run build`
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Technologies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [React Router v6](https://reactrouter.com/)
+- [Tailwindcss v3](https://tailwindcss.com/docs/installation)
+- [Font Awsome v6](https://fontawesome.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Credits
 
-### `npm run eject`
+I was inspired by some basic features of [Notion](https://www.notion.so/) and this [Dribble](https://dribbble.com/shots/15261921-Dashboard-for-workflow) in designing the UX and UI of this project.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Licence
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The project is licensed under the [GPLv3](https://gist.github.com/kn9ts/cbe95340d29fc1aaeaa5dd5c059d2e60).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Donate
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Friends living in Iran can support me by [buy me a coffee](https://coffeebede.ir/buycoffee/erfan74sh) :coffee: . I appreciate your support :heart:
 
-## Learn More
+## Deployment
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+U can see this project live [here](https://advanced-todos-eshafiee.vercel.app/)
