@@ -125,7 +125,7 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 
 	return (
 		<article
-			className="w-full sm:w-72 lg:w-80 bg-blue-50 rounded-xl p-4 pt-0 flex flex-col gap-y-3 min-h-screen"
+			className="min-w-full sm:min-w-0 sm:w-72 lg:w-80 bg-blue-50 rounded-xl p-4 pt-0 flex flex-col gap-y-3 min-h-screen"
 			id={groupName}
 		>
 			<header className="flex flex-col gap-y-3 sticky top-0 pt-4 pb-3 z-10 bg-blue-50">
