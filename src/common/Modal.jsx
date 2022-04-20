@@ -34,7 +34,6 @@ const Modal = () => {
 		if (thisTask.description === "") {
 			moreDescriptionRef.current.focus();
 		}
-		console.log(thisTask);
 	}, [tasks, taskId]);
 
 	const [nextTaskStatus, setNextTaskStatus] = useState({
@@ -115,14 +114,12 @@ const Modal = () => {
 			case "next":
 				if (currentTaskIndex < tasksInGroup.length - 1) {
 					const nextTaskId = tasksInGroup[currentTaskIndex + 1].id;
-					console.log(nextTaskId);
 					navigate(`/${nextTaskId}`);
 					break;
 				} else return;
 			case "prev":
 				if (currentTaskIndex > 0) {
 					const prevTaskId = tasksInGroup[currentTaskIndex - 1].id;
-					console.log(prevTaskId);
 					navigate(`/${prevTaskId}`);
 					break;
 				} else return;

@@ -100,7 +100,6 @@ const TasksProvider = ({ children }) => {
 			tempTasks[draggedTaskIndex] = editedTask;
 		}
 		tempTasks.splice(draggedTaskIndex, 1);
-		console.log(tempTasks);
 		if (position > 0) {
 			tempTasks.splice(
 				draggedTaskIndex >= targetIndex ? targetIndex + 1 : targetIndex,

@@ -76,7 +76,6 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 		e.preventDefault();
 		e.dataTransfer.dropEffect = "move";
 		setIsDraggingOver(true);
-		console.log("drag over");
 	};
 
 	const handleDragOverCard = (e, id) => {
