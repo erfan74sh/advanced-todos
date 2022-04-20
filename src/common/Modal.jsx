@@ -132,7 +132,7 @@ const Modal = () => {
 	};
 
 	return (
-		<div className="fixed w-screen h-screen bg-gray-300 z-10 bg-opacity-60 backdrop-filter backdrop-blur-sm">
+		<div className="fixed w-screen h-screen bg-gray-300 z-50 bg-opacity-60 backdrop-filter backdrop-blur-sm">
 			<div className="w-full h-full sm:px-10 flex items-center justify-center">
 				<div
 					className="w-full md:w-4/5 lg:w-3/5 max-h-full overflow-y-auto bg-white shadow-2xl rounded-lg px-5 pb-3"
