@@ -10,17 +10,17 @@ const Groups = () => {
 	return (
 		<div className="flex justify-between gap-x-2 flex-col gap-y-2 sm:flex-row items-stretch">
 			<Group
-				groupName="todo"
+				groupName="ToDo"
 				draggedRef={draggedRef}
 				draggedTargetRef={draggedTargetRef}
 			/>
 			<Group
-				groupName="doing"
+				groupName="Doing"
 				draggedRef={draggedRef}
 				draggedTargetRef={draggedTargetRef}
 			/>
 			<Group
-				groupName="completed"
+				groupName="Done"
 				draggedRef={draggedRef}
 				draggedTargetRef={draggedTargetRef}
 			/>
