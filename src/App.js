@@ -4,8 +4,6 @@ import TasksProvider from "./providers/TasksProvider";
 import SearchAndSortProvider from "./providers/SearchAndSortProvider";
 // components
 import Groups from "./components/Groups";
-// styles
-import "./App.css";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
