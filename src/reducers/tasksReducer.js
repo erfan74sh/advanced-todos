@@ -6,13 +6,22 @@ export const initialState = {
 	],
 	tasks: [
 		{
-			title: "sample task title...",
+			title: "Drag me below next card...",
 			description:
-				"try moving this card to another group or change it's order by dragging...",
-			group: "todo",
+				"try moving this card after next card by dragging to change it's order ...",
+			group: "ToDo",
 			id: 1,
 			createdDate: new Date().toLocaleString(),
-			tags: [],
+			tags: ["Q1"],
+		},
+		{
+			title: "Drag me to another group...",
+			description:
+				"try moving this card to another group by dragging to change it's group...",
+			group: "ToDo",
+			id: 2,
+			createdDate: new Date().toLocaleString(),
+			tags: ["Q2"],
 		},
 	],
 };
