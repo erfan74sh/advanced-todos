@@ -38,21 +38,16 @@ const MoveToGroup = ({ handleTaskChange, taskGroup }) => {
 					onInput={(e) => handleOnChange(e)}
 				>
 					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
-						<input type="radio" name="group" value="todo" className="hidden" />
-						<span>todo</span>
+						<input type="radio" name="group" value="ToDo" className="hidden" />
+						<span>ToDo</span>
 					</label>
 					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
-						<input type="radio" name="group" value="doing" className="hidden" />
-						<span>doing</span>
+						<input type="radio" name="group" value="Doing" className="hidden" />
+						<span>Doing</span>
 					</label>
 					<label className="block px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75 ">
-						<input
-							type="radio"
-							name="group"
-							value="completed"
-							className="hidden"
-						/>
-						<span>completed</span>
+						<input type="radio" name="group" value="Done" className="hidden" />
+						<span>Done</span>
 					</label>
 				</form>
 			)}
