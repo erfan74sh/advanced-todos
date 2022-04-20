@@ -47,7 +47,7 @@ const Sort = () => {
 				<div className="flex gap-x-1" onChange={(e) => handleOrderChange(e)}>
 					<label
 						className={`cursor-pointer px-1.5 py-2 leading-none hover:text-sky-900 rounded ${
-							sortOrder === "ascending" && "bg-zinc-100"
+							sortOrder === "ascending" && "bg-slate-50"
 						}`}
 						title="ascending"
 					>
@@ -63,7 +63,7 @@ const Sort = () => {
 					</label>
 					<label
 						className={`cursor-pointer px-1.5 py-2 leading-none hover:text-sky-900 rounded ${
-							sortOrder === "descending" && "bg-zinc-100"
+							sortOrder === "descending" && "bg-slate-50"
 						}`}
 						title="descending"
 					>
@@ -80,7 +80,7 @@ const Sort = () => {
 				</div>
 			)}
 			<div
-				className="bg-zinc-100 rounded-md px-2 py-1 flex gap-x-1 items-center text-zinc-600 cursor-pointer"
+				className="bg-slate-50 rounded-md px-2 py-1 flex gap-x-1 items-center text-zinc-600 cursor-pointer"
 				onClick={() => setShowDropdown(!showDropdown)}
 			>
 				<div>
@@ -98,7 +98,7 @@ const Sort = () => {
 				</div>
 				{sortBy !== "" && (
 					<span
-						className="w-5 flex items-center justify-center h-5 hover:bg-zinc-200 cursor-pointer"
+						className="w-5 flex items-center justify-center h-5 hover:bg-slate-200 cursor-pointer"
 						onClick={() => {
 							setSortBy("");
 						}}
@@ -109,12 +109,12 @@ const Sort = () => {
 			</div>
 			{showDropdown && (
 				<ul
-					className="flex flex-col px-2 py-2.5 w-36 absolute right-0 rounded-md -bottom-1 transform translate-y-full bg-zinc-50 shadow-lg z-50"
+					className="flex flex-col px-2 py-2.5 w-36 absolute right-0 rounded-md -bottom-1 transform translate-y-full bg-slate-50 shadow-lg z-50"
 					onChange={(e) => handleChange(e)}
 				>
 					<li>
 						<label
-							className={`flex items-center cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded ${
+							className={`flex items-center cursor-pointer px-1.5 py-2 leading-none hover:bg-slate-200 rounded ${
 								sortBy === "name" && "text-sky-900 font-bold"
 							}`}
 						>
@@ -132,7 +132,7 @@ const Sort = () => {
 					</li>
 					<li>
 						<label
-							className={`flex items-center cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded ${
+							className={`flex items-center cursor-pointer px-1.5 py-2 leading-none hover:bg-slate-200 rounded ${
 								sortBy === "date" && "text-sky-900 font-bold"
 							}`}
 						>
