@@ -10,7 +10,7 @@ import {
 	faArrowDownAZ,
 	faArrowDownShortWide,
 	faArrowDownWideShort,
-	faCaretDown,
+	faBars,
 	faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -47,7 +47,7 @@ const Sort = () => {
 				<div className="flex gap-x-1" onChange={(e) => handleOrderChange(e)}>
 					<label
 						className={`cursor-pointer px-1.5 py-2 leading-none hover:text-sky-900 rounded ${
-							sortOrder === "ascending" && "bg-zinc-200"
+							sortOrder === "ascending" && "bg-zinc-100"
 						}`}
 						title="ascending"
 					>
@@ -63,7 +63,7 @@ const Sort = () => {
 					</label>
 					<label
 						className={`cursor-pointer px-1.5 py-2 leading-none hover:text-sky-900 rounded ${
-							sortOrder === "descending" && "bg-zinc-200"
+							sortOrder === "descending" && "bg-zinc-100"
 						}`}
 						title="descending"
 					>
@@ -80,18 +80,32 @@ const Sort = () => {
 				</div>
 			)}
 			<div
-				className="hover:bg-zinc-100 rounded-md px-1 py-1 flex gap-x-3 items-center text-zinc-600 cursor-pointer"
+				className="bg-zinc-100 rounded-md px-2 py-1 flex gap-x-1 items-center text-zinc-600 cursor-pointer"
 				onClick={() => setShowDropdown(!showDropdown)}
 			>
 				<div>
-					<span>Sort by </span>
+					{!sortBy && (
+						<span className="flex items-center gap-x-2">
+							Sort
+							<FontAwesomeIcon icon={faBars} />
+						</span>
+					)}
 					{sortBy && (
 						<span className="text-sky-900 font-medium capitalize">
 							{sortBy}
 						</span>
 					)}
 				</div>
-				<FontAwesomeIcon icon={faCaretDown} />
+				{sortBy !== "" && (
+					<span
+						className="w-5 flex items-center justify-center h-5 hover:bg-zinc-200 cursor-pointer"
+						onClick={() => {
+							setSortBy("");
+						}}
+					>
+						<FontAwesomeIcon icon={faXmark} />
+					</span>
+				)}
 			</div>
 			{showDropdown && (
 				<ul
@@ -132,19 +146,6 @@ const Sort = () => {
 								value="date"
 								className="hidden"
 							/>
-						</label>
-					</li>
-					<li>
-						<label
-							className={`flex items-center cursor-pointer px-1.5 py-2 leading-none hover:bg-zinc-200 rounded text-red-400 ${
-								sortBy === "" && "font-bold"
-							}`}
-						>
-							<span className="w-5 flex items-center justify-center h-5 mr-1">
-								<FontAwesomeIcon icon={faXmark} />
-							</span>
-							<span>None</span>
-							<input type="radio" name="sortBy" value="" className="hidden" />
 						</label>
 					</li>
 				</ul>
