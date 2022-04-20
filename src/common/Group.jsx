@@ -125,16 +125,18 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 
 	return (
 		<article
-			className="w-full sm:w-72 lg:w-80 bg-blue-50 rounded-xl p-4 flex flex-col gap-y-3 min-h-screen"
+			className="w-full sm:w-72 lg:w-80 bg-blue-50 rounded-xl p-4 pt-0 flex flex-col gap-y-3 min-h-screen"
 			id={groupName}
 		>
-			<header className="flex justify-between items-center">
-				<h2 className="font-medium capitalize">{groupName}</h2>
-				<span className="py-0.5 px-2 max-w-full rounded bg-blue-100 text-sm text-sky-900">
-					{tasksInGroup.length}
-				</span>
+			<header className="flex flex-col gap-y-3 sticky top-0 pt-4 pb-3 z-10 bg-blue-50">
+				<div className="flex justify-between items-center">
+					<h2 className="font-medium capitalize">{groupName}</h2>
+					<span className="py-0.5 px-2 max-w-full rounded bg-blue-100 text-sm text-sky-900">
+						{tasksInGroup.length}
+					</span>
+				</div>
+				<NewTodo groupName={groupName} />
 			</header>
-			<NewTodo groupName={groupName} />
 			<ul
 				className={`flex flex-col gap-y-3 h-full flex-grow droppable rounded-md transition-all relative ${
 					isDraggingOver ? " bg-white bg-opacity-70" : "bg-transparent"
