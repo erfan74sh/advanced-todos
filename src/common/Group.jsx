@@ -129,12 +129,14 @@ const Group = ({ groupName, draggedRef, draggedTargetRef }) => {
 			id={groupName}
 		>
 			<header className="flex flex-col gap-y-3 sticky top-0 pt-4 pb-3 z-10 bg-blue-50">
-				<div className="flex justify-between items-center">
-					<h2 className="font-medium capitalize">{groupName}</h2>
-					<span className="py-0.5 px-2 max-w-full rounded bg-blue-100 text-sm text-sky-900">
-						{tasksInGroup.length}
-					</span>
-				</div>
+				<a href={`#${groupName}`}>
+					<div className="flex justify-between items-center">
+						<h2 className="font-medium capitalize">{groupName}</h2>
+						<span className="py-0.5 px-2 max-w-full rounded bg-blue-100 text-sm text-sky-900">
+							{tasksInGroup.length}
+						</span>
+					</div>
+				</a>
 				<NewTodo groupName={groupName} />
 			</header>
 			<ul
