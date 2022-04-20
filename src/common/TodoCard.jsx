@@ -61,7 +61,7 @@ const TodoCard = ({
 			<article className="flex flex-col gap-y-1">
 				<header>
 					<h3 className="font-medium flex justify-between gap-x-0.5 relative">
-						<span className="pr-6">
+						<span className="pr-6 truncate">
 							{searchValue.length > 0 ? (
 								parts.map((part, idx) => {
 									if (part.toLowerCase() === searchValue.toLowerCase()) {
@@ -84,7 +84,9 @@ const TodoCard = ({
 						</div>
 					</h3>
 				</header>
-				{description && <section>{description}</section>}
+				{description && (
+					<section className="line-clamp-3">{description}</section>
+				)}
 				{tags.length > 0 && (
 					<section>
 						<Tags tags={tags} />
