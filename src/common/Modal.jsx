@@ -219,7 +219,7 @@ const Modal = () => {
 								name="description"
 								ref={moreDescriptionRef}
 								rows={4}
-								className="outline-none w-full bg-transparent hover:bg-slate-50 px-1.5 py-1 rounded-md focus:ring-2 overflow-hidden resize-none"
+								className="outline-none w-full bg-transparent hover:bg-slate-50 px-1.5 py-1 rounded-md focus:ring-2 overflow-y-auto resize-none"
 								onChange={(e) => handleTaskChange(e)}
 							/>
 						</section>
