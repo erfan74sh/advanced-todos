@@ -13,7 +13,11 @@ These are a few of the features I implemented in this project:
 
 The most challenging part for me was "Drag and Drop" feature , which I tried to implement without using third-party libraries. I also implemented features such as closing Modals or Dropdown lists when clicked outside, in the meantime I learned more and deeper features of React such as `custom hooks`, `useReducers`, `useContext`, `useRef` and .... .
 
-<div  style="position: relative; padding-bottom: 56.25%; height: 0; width: 100%" align= "center"><iframe  src="https://www.loom.com/embed/4eb36fb4ba734fb898eff4f38cec04e5"  frameborder="0"  webkitallowfullscreen  mozallowfullscreen  allowfullscreen  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+<div  align="center">
+<a href="https://www.loom.com/share/4eb36fb4ba734fb898eff4f38cec04e5" >
+    <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/4eb36fb4ba734fb898eff4f38cec04e5-with-play.gif">
+  </a>
+</div>
 
 ## instructions
 
@@ -42,10 +46,12 @@ I was inspired by some basic features of [Notion](https://www.notion.so/) and th
 
 The project is licensed under the [GPLv3](https://gist.github.com/kn9ts/cbe95340d29fc1aaeaa5dd5c059d2e60).
 
-## Donate
-
-Friends living in Iran can support me by [buy me a coffee](https://coffeebede.ir/buycoffee/erfan74sh) :coffee: . I appreciate your support :heart:
-
 ## Deployment
 
 U can see this project live [here](https://advanced-todos-eshafiee.vercel.app/)
+
+![image](https://github.com/erfan74sh/advanced-todos/blob/master/src/assets/Screenshot.png)
+
+## Donate
+
+Friends living in Iran can support me by [buy me a coffee](https://coffeebede.ir/buycoffee/erfan74sh) :coffee: . I appreciate your support :heart:
