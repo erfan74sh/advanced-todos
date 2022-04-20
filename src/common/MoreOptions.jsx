@@ -60,7 +60,7 @@ const MoreOptions = ({
 							className="text-sm text-neutral-400"
 						/>
 					</span>
-					<span>edit</span>
+					<span>Edit</span>
 				</li>
 				<li
 					className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
@@ -72,7 +72,7 @@ const MoreOptions = ({
 							className="text-sm text-neutral-400"
 						/>
 					</span>
-					<span>delete</span>
+					<span>Delete</span>
 				</li>
 				<li
 					className="flex gap-x-2 items-center px-1 py-0.5 hover:bg-stone-200 cursor-pointer rounded font-normal transition-colors duration-75"
@@ -84,7 +84,7 @@ const MoreOptions = ({
 							className="text-sm text-neutral-400"
 						/>
 					</span>
-					<span>duplicate</span>
+					<span>Duplicate</span>
 				</li>
 			</ul>
 		</>
