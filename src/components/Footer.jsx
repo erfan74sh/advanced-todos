@@ -11,12 +11,12 @@ const Footer = () => {
 					href="https://coffeebede.ir/buycoffee/erfan74sh"
 					target="_blank"
 					rel="noreferrer"
-					className="font-medium"
+					className="font-medium bg-slate-100 transition-colors px-2 py-1 rounded-md"
 				>
 					buy me a coffee
 					<FontAwesomeIcon
 						icon={faMugHot}
-						className="text-orange-500 text-xl mx-2 fa-bounce"
+						className="text-orange-500 text-xl ml-2 fa-bounce"
 					/>
 				</a>
 				to support me ❤️
